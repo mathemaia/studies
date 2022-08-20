@@ -59,11 +59,11 @@ public class BeeCrowd1045 {
             for (int i = 0; i < tipos.length; i++) {
                 if (tipos[i]) {
                     switch (i) {
-                        case 0 -> System.out.print("TRIANGULO RETANGULO\n");
-                        case 1 -> System.out.print("TRIANGULO OBTUSANGULO\n");
-                        case 2 -> System.out.print("TRIANGULO ACUTANGULO\n");
-                        case 3 -> System.out.print("TRIANGULO EQUILATERO\n");
-                        case 4 -> System.out.print("TRIANGULO ISOSCELES\n");
+                        case 0 : System.out.print("TRIANGULO RETANGULO\n");
+                        case 1 : System.out.print("TRIANGULO OBTUSANGULO\n");
+                        case 2 : System.out.print("TRIANGULO ACUTANGULO\n");
+                        case 3 : System.out.print("TRIANGULO EQUILATERO\n");
+                        case 4 : System.out.print("TRIANGULO ISOSCELES\n");
                     }
                 }
             }
