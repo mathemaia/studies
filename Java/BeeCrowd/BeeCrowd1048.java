@@ -8,8 +8,9 @@ import java.util.Locale;
  *      800.01 - 1200.00: 10% de reajuste
  *      1200.01 - 2000.00: 7% de reajuste
  *      Acima de 2000.00: 4% de reajuste
- *Leia o salário do funcionário e calcule e mostre o novo salário, bem como o valor de reajuste ganho e o índice reajustado,
+ * Leia o salário do funcionário e calcule e mostre o novo salário, bem como o valor de reajuste ganho e o índice reajustado,
  * em percentual.
+ *
  * @author Matheus Maia
  * @version 05/07/2022
  */

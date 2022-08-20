@@ -11,6 +11,7 @@ import java.util.Scanner;
  *      se A2 < B2 + C2, apresente a mensagem: TRIANGULO ACUTANGULO
  *      se os três lados forem iguais, apresente a mensagem: TRIANGULO EQUILATERO
  *      se apenas dois dos lados forem iguais, apresente a mensagem: TRIANGULO ISOSCELES
+ *
  * @author Matheus Maia
  * @version 29/06/2022
  */

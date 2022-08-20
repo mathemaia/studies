@@ -3,6 +3,7 @@ import java.util.Scanner;
 /**
  * Leia 3 valores inteiros e ordene-os em ordem crescente. No final, mostre os valores em ordem crescente, uma linha em
  * branco e em seguida, os valores na sequência como foram lidos.
+ * 
  * @author Matheus Maia
  * @version 24/06/2022
  */

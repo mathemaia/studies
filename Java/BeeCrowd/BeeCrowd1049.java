@@ -25,6 +25,7 @@ import java.util.Scanner;
  *                  - sanguessuga
  *              3. onivoro:
  *                  - minhoca
+ 
  * @author Matheus Maia
  * @version 05/07/2022
  */

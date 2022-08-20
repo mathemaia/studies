@@ -3,6 +3,7 @@ import java.util.Scanner;
 /**
  * Leia 2 valores inteiros (A e B). Após, o programa deve mostrar uma mensagem "Sao Multiplos" ou "Nao sao Multiplos",
  * indicando se os valores lidos são múltiplos entre si.
+ *
  * @author Matheus Maia
  * @version 25/06/2022
  */
