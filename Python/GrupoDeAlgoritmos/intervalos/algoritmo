@@ -1,0 +1,5 @@
+1. organizar em ordem crescente
+2. ver se o numero seguinte ao intervalo atual está no proximo intervalo
+	2.1. se não: anotar em um array
+	2.2. analizar o proximo intervalo
+3. voltar ao passo 2
