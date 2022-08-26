@@ -1,0 +1,9 @@
+1. identificar o intervalo cujo primeiro número é o menor
+2. pegar o último número deste intervalo
+3. checar se ele pertence a algum intervalo
+	3.1. se não: checar se o seguinte pertence a algum intervalo
+		3.1.1. se não: anotar em uma lista
+		3.1.2. se sim: voltar ao passo 3
+	3.2. se sim: pegar o último número deste intervalo
+	3.3. voltar ao passo 3
+4. identicar qual dos números é o menor
