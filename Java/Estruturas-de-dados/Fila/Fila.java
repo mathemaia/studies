@@ -75,16 +75,6 @@ public class Fila {
     }
 
     /**
-     * Retorna o elemento que está no fim da fila sem retirá-lo.
-     * @return último elemento.
-     */
-    public Integer fim() {
-        if (quantidade == -1)
-            throw new FilaVaziaErro("Fila vazia!");
-        return fila[fim];
-    }
-
-    /**
      * Método que esvazia a fila reiniciando-a.
      */
     public void esvaziar() {
