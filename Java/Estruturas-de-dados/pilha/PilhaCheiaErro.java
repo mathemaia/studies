@@ -1,5 +1,3 @@
-package pilha;
-
 /**
  * Classe que faz o tratamento de erro para pilha cheia
  * @author matheus maia

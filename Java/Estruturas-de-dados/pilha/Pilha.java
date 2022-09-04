@@ -1,4 +1,5 @@
-package pilha;
+import PilhaCheiaErro;
+import PilhaVaziaErro;
 
 /**
  * Classe da estrutura de dados pilha com todos os seus métodos.
