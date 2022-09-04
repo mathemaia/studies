@@ -1,6 +1,3 @@
-import PilhaCheiaErro;
-import PilhaVaziaErro;
-
 /**
  * Classe da estrutura de dados pilha com todos os seus métodos.
  * @author matheus maia
@@ -31,7 +28,7 @@ public class Pilha {
      * Método que permite definir um tamanho para a pilha.
      * @param tamanho tamanho a ser definido.
      */
-    public void setSize(int tamanho) {
+    public void tamanho(int tamanho) {
         pilha = new Integer[tamanho];
     }
 
@@ -39,7 +36,7 @@ public class Pilha {
      * Insere um elemento no topo da pilha.
      * @param elemento elemento a ser inserido
      */
-    public void push(Integer elemento) {
+    public void inserir(Integer elemento) {
         if (count == pilha.length)
             throw new PilhaCheiaErro("Pilha cheia.");
         this.pilha[count] = elemento;
@@ -50,7 +47,7 @@ public class Pilha {
      * Remove e retorna o elemento do topo da pilha (com erro se estiver vazia)
      * @return num
      */
-    public Integer pop() {
+    public Integer retirar() {
         if (count == 0)
             throw new PilhaVaziaErro("Pilha vazia.");
         Integer num = pilha[count - 1];
@@ -63,7 +60,7 @@ public class Pilha {
      * Retorna o elemento do topo da pilha sem removê-lo.
      * @return pilha[count - 1]
      */
-    public Integer top() {
+    public Integer topo() {
         if (count == 0)
             throw new PilhaVaziaErro("Pilha Vazia.");
         return pilha[count - 1];
@@ -73,7 +70,7 @@ public class Pilha {
      * Retorna o tamanho atual da pilha.
      * @return count
      */
-    public int getSize() {
+    public int tamanho() {
         return count;
     }
 
@@ -81,14 +78,14 @@ public class Pilha {
      * Método que retorna se a pilha está ou não vazia com um valor booleano.
      * @return true ou false
      */
-    public boolean isEmpty() {
+    public boolean estaVazia() {
         return count == 0;
     }
 
     /**
      * Esvazia a pilha.
      */
-    public void clear() {
+    public void esvaziar() {
         pilha = new Integer[10];
         count = 0;
     }
