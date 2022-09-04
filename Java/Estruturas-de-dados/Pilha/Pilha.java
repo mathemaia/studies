@@ -25,14 +25,6 @@ public class Pilha {
     }
 
     /**
-     * Método que permite definir um tamanho para a pilha.
-     * @param tamanho tamanho a ser definido.
-     */
-    public void tamanho(int tamanho) {
-        pilha = new Integer[tamanho];
-    }
-
-    /**
      * Insere um elemento no topo da pilha.
      * @param elemento elemento a ser inserido
      */
