@@ -1,4 +1,3 @@
-package alest;
 import java.util.Random;
 
 /**
