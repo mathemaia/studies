@@ -1,6 +1,11 @@
 package testes;
 import java.util.Random;
 
+/**
+ * Chuva do Matrix no terminal
+ * @author matheus maia
+**/
+
 public class Matrix {
     public static void main(String[] args) throws InterruptedException {
         Random random = new Random();
@@ -29,14 +34,7 @@ public class Matrix {
                 System.out.printf("\u001b[28m\u001b[%d;%dH", i, coluna);
             }
 
-
             Thread.sleep(1000);
-
-
-
-
-
-
         }
     }
 }
