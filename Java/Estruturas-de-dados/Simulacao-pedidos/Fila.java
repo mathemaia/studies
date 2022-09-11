@@ -5,23 +5,22 @@
  */
 
 public class Fila {
-    private Integer[] fila;
+    private Pedido[] vetorPedidos;
     private int inicio;
     private int fim;
     private int quantidade;
 
     // Contrutores.
     public Fila() {
-        this.fila = new Integer[5];
-        this.inicio = 0;
-        this.fim = -1;
+        this.vetorPedidos = new Pedido[1000];
         this.quantidade = 0;
+        this.inicio = 0;
+        this.fim = 0;
     }
     public Fila(int tamanho) {
-        this.fila = new Integer[tamanho];
-        this.inicio = 0;
-        this.fim = -1;
         this.quantidade = 0;
+        this.inicio = 0;
+        this.fim = 0;
     }
 
     /**
@@ -33,36 +32,28 @@ public class Fila {
     }
 
     /**
-     * Retorna true se for possível inserir um novo elemento e false caso contrário.
-     * @return true ou false
-     */
-    public boolean temLugar() {
-        return quantidade < fila.length;
-    }
-
-    /**
      * Método para inserir novos elementos no fim da fila.
      * @param elemento elemento a ser inserido
      */
-    public void inserir(Integer elemento) {
-        if (!temLugar())
+    public void inserir(Pedido elemento) {
+        if (quantidade == vetorPedidos.length)
             throw new FilaCheiaErro("Fila cheia!");
-        this.fila[fim] = elemento;
+        this.vetorPedidos[fim] = elemento;
         this.quantidade++;
-        this.fim =(fim + 1) % fila.length;
+        fim = (fim + 1) % vetorPedidos.length;
     }
 
     /**
      * Método que retira o primeiro elemento que foi inserido na fila.
      * @return primeiro elemento
      */
-    public Integer retirar() {
+    public Pedido retirar() {
         if (quantidade == 0)
             throw new FilaVaziaErro("Fila Vazia!");
-        Integer aux = fila[inicio];
-        this.fila[inicio] = null;
-        this.inicio++;
+        Pedido aux = vetorPedidos[inicio];
         this.quantidade--;
+        this.inicio = (inicio + 1) % vetorPedidos.length;
+        this.vetorPedidos[inicio] = null;
         return aux;
     }
 
@@ -70,16 +61,18 @@ public class Fila {
      * Retorna primeiro elemento da fila sem retirá-lo.
      * @return primeiro elemento
      */
-    public Integer inicio() {
-        if (quantidade == 0) throw new FilaCheiaErro("Fila vazia");
-        return fila[inicio];
+    public Pedido inicio() {
+        return vetorPedidos[inicio];
     }
 
+    /**
+     * Método que esvazia a fila reiniciando-a.
+     */
     public void esvaziar() {
-        this.fila = new Integer[5];
-        this.inicio = 0;
-        this.fim = -1;
+        this.vetorPedidos = new Pedido[1000];
         this.quantidade = 0;
+        this.inicio = 0;
+        this.fim = 0;
     }
 }
 
