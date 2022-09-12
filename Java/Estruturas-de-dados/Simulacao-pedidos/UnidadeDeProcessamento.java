@@ -1,7 +1,6 @@
 public abstract class UnidadeDeProcessamento {
     private final Fila fila = new Fila();
-    private Pedido[] processadores = new Pedido[3];
-    private boolean temProcessadorLivre;
+    private final Pedido[] processadores = new Pedido[3];
     private int indiceProcessadorLivre;
     private boolean processamentoFinalizado;
     public Pedido pedido;
@@ -13,8 +12,7 @@ public abstract class UnidadeDeProcessamento {
     public void colocaNaFila(Pedido pedido) {
         fila.inserir(pedido);
         this.pedido = pedido;
-        System.out.println(pedido + " entrou.");
-        System.out.println("tamanho: " + fila.tamanho());
+        System.out.println("\n\n" + pedido + " entrou na fila.\n\n");
     }
 
     /**
@@ -22,14 +20,16 @@ public abstract class UnidadeDeProcessamento {
      * @return true ou false
      */
     public boolean temProcessadorLivre() {
+        boolean temProcessadorLivre = false;
         for (int i = 0; i < processadores.length; i++) {
             if (processadores[i] == null) {
-                this.temProcessadorLivre = true;
+                temProcessadorLivre = true;
                 this.indiceProcessadorLivre = i;
+                break;
             }
         }
 
-        return this.temProcessadorLivre;
+        return temProcessadorLivre;
     }
 
     /**
@@ -44,15 +44,18 @@ public abstract class UnidadeDeProcessamento {
      * Atribui o pedido retirado da fila ao processador livre.
      */
     public void atribuiAoProcessadorLivre(Pedido pedido) {
-        processadores[indiceProcessadorLivre] = pedido;
+        processadores[getIndiceProcessadorLivre()] = pedido;
+
+        System.out.println(pedido + " esta sendo processado.");
+        System.out.println("indiceProcessador: " + getIndiceProcessadorLivre());
     }
 
     public boolean processamentoFinalizado() {
-        return this.processamentoFinalizado;
+        return processamentoFinalizado;
     }
 
-    public int getTempo() {
-        return pedido.getTempoParaProcessar();
+    public int getIndiceProcessadorLivre() {
+        return this.indiceProcessadorLivre;
     }
 }
 

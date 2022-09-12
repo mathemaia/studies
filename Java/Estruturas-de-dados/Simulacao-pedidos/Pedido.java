@@ -3,7 +3,7 @@ public class Pedido {
     private Integer qtdPizzas;
     private Integer qtdPasteis;
     private Integer instante;
-    private int tempoParaProcessar;
+    private Integer tempoParaProcessar;
     private int tempoGasto;
 
     // Construtores.
@@ -12,7 +12,7 @@ public class Pedido {
         this.qtdPasteis = null;
         this.instante = null;
         this.numero = null;
-        this.tempoParaProcessar = 0;
+        this.tempoParaProcessar = null;
         this.tempoGasto = 0;
     }
     public Pedido(Integer qtdPizzas, Integer qtdPasteis,
@@ -30,7 +30,7 @@ public class Pedido {
     public void setQtdPizzas(Integer qtdPizzas) { this.qtdPizzas = qtdPizzas; }
     public void setQtdPasteis(Integer qtdPasteis) { this.qtdPasteis = qtdPasteis; }
     public void setInstante(Integer instante) { this.instante = instante; }
-    public void setTempoParaProcessar(int tempoParaProcessar) { this.tempoParaProcessar = tempoParaProcessar; }
+    public void setTempoParaProcessar(Integer tempoParaProcessar) { this.tempoParaProcessar = tempoParaProcessar; }
     public void setTempoGasto(int tempoGasto) { this.tempoGasto = tempoGasto; }
 
     // Getters.
@@ -38,7 +38,7 @@ public class Pedido {
     public Integer getQtdPizzas() { return qtdPizzas; }
     public Integer getQtdPasteis() { return qtdPasteis; }
     public Integer getInstante() { return instante; }
-    public int getTempoParaProcessar() { return tempoParaProcessar; }
+    public Integer getTempoParaProcessar() { return tempoParaProcessar; }
     public int getTempoGasto() { return tempoGasto; }
 
     // Outros métodos.

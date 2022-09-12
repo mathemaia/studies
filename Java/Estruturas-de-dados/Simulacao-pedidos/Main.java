@@ -39,17 +39,27 @@ public class Main {
 
         do {
             int numeroAleatorio = random.nextInt(99);
-            System.out.println("numero: " + numeroAleatorio + "");
 
             // Se o número aleatório for maior que 80, é gerado um novo pedido.
-            if (numeroAleatorio > 10) {
-                System.out.println();
+            if (numeroAleatorio > 50) {
                 Pedido pedido = gerarPedido(tempo, numeroDoPedido);
+                Integer pasteis = pedido.getQtdPasteis();
+                Integer pizzas = pedido.getQtdPizzas();
+
+                // Montagem do pedido
                 montagem.colocaNaFila(pedido);
-                System.out.println("pasteis: " + pedido.getQtdPasteis() + "\npizzas:" + pedido.getQtdPizzas());
-                System.out.println(tempo + " hrs");
-                System.out.println("tempo para processar: " + montagem.getTempo());
-                System.out.println();
+                montagem.setTempoNecessario(pedido.getQtdPasteis(), pedido.getQtdPizzas());
+                if (montagem.temProcessadorLivre()) {
+                    System.out.printf("PROCESSADOR #%d LIVRE\n", montagem.getIndiceProcessadorLivre());
+                    montagem.retiraDaFila();
+                    montagem.atribuiAoProcessadorLivre(pedido);
+                }
+
+
+
+
+
+
             }
 
             /*
@@ -63,7 +73,7 @@ public class Main {
             Thread.sleep(2500);
             tempo++;
             numeroDoPedido++;
-        } while (tempo < 50);
+        } while (tempo < 8 * 60);
     }
 }
 

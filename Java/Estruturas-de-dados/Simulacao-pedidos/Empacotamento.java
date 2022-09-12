@@ -4,11 +4,8 @@ public class Empacotamento extends UnidadeDeProcessamento {
      *      1 instante p/ pizza.
      *      1 instante p/ pastel.
      */
-    public void setTempoNecessario() {
-        int qtdPasteis = this.pedido.getQtdPasteis();
-        int qtdPizzas = this.pedido.getQtdPizzas();
-        int tempo = qtdPizzas  + qtdPasteis;
-        this.pedido.setTempoParaProcessar(tempo);
+    public void setTempoNecessario(Integer pasteis, Integer pizzas) {
+        pedido.setTempoParaProcessar((pizzas * 3)  + pasteis);
     }
     public int getTempoNecessario() {
         return pedido.getTempoParaProcessar();
