@@ -1,73 +1,48 @@
-import java.util.Random;
-
 public class Pedido {
-    Random random = new Random();
-    private final int qtdPasteis;
-    private final int qtdPizzas;
-    private final String id;
-    private int tempoEmpacotamento;
-    private int tempoCozimento;
-    private int tempoMontagem;
-    private int tempoTotal;
+    private Integer numero;
+    private Integer qtdPizzas;
+    private Integer qtdPasteis;
+    private Integer instante;
+    private int tempoParaProcessar;
+    private int tempoGasto;
 
-    // Construtores
-    public Pedido(String id) {
-        this.qtdPasteis = random.nextInt(6) + 1;
-        this.qtdPizzas = random.nextInt(2) + 1;
-        this.id = "#" + id + "#";
-    }
+    // Construtores.
     public Pedido() {
-        this.qtdPasteis = random.nextInt(6) + 1;
-        this.qtdPizzas = random.nextInt(2) + 1;
-        this.id = null;
+        this.qtdPizzas = null;
+        this.qtdPasteis = null;
+        this.instante = null;
+        this.numero = null;
+        this.tempoParaProcessar = 0;
+        this.tempoGasto = 0;
+    }
+    public Pedido(Integer qtdPizzas, Integer qtdPasteis,
+                  Integer instante, int numero) {
+        this.qtdPizzas = qtdPizzas;
+        this.qtdPasteis = qtdPasteis;
+        this.instante = instante;
+        this.numero  = numero;
+        this.tempoParaProcessar = 0;
+        this.tempoGasto = 0;
     }
 
-    // Setters
-    public void setTempoTotal(int t1, int t2, int t3) {
-        this.tempoTotal = t1 + t2 + t3;
-        this.tempoEmpacotamento = t1;
-        this.tempoCozimento = t2;
-        this.tempoMontagem = t3;
-    }
-    public void setNovoInstante(Integer instante) {
-        this.tempoTotal = getTempoTotal() - instante;
-    }
+    // Setters.
+    public void setNumero(Integer numero) { this.numero = numero; }
+    public void setQtdPizzas(Integer qtdPizzas) { this.qtdPizzas = qtdPizzas; }
+    public void setQtdPasteis(Integer qtdPasteis) { this.qtdPasteis = qtdPasteis; }
+    public void setInstante(Integer instante) { this.instante = instante; }
+    public void setTempoParaProcessar(int tempoParaProcessar) { this.tempoParaProcessar = tempoParaProcessar; }
+    public void setTempoGasto(int tempoGasto) { this.tempoGasto = tempoGasto; }
 
-    // Getters
-    /**
-     * @return quantidade de pasteis.
-     */
-    public Integer getQtdPasteis() {
-        return this.qtdPasteis;
+    // Getters.
+    public Integer getNumero() { return numero; }
+    public Integer getQtdPizzas() { return qtdPizzas; }
+    public Integer getQtdPasteis() { return qtdPasteis; }
+    public Integer getInstante() { return instante; }
+    public int getTempoParaProcessar() { return tempoParaProcessar; }
+    public int getTempoGasto() { return tempoGasto; }
+
+    // Outros métodos.
+    public void imprime() {
+
     }
-    /**
-     * @return quantidade de pizzas.
-     */
-    public Integer getQtdPizzas() {
-        return this.qtdPizzas;
-    }
-    /**
-     * @return tempo total
-     */
-    public int getTempoTotal() {
-        return this.tempoTotal;
-    }
-    /**
-     * @return id
-     */
-    public String getId() {
-        return this.id;
-    }
-    /**
-     * @return tempo de montagem.
-     */
-    public int tempoMontagem() { return (getQtdPizzas() * 3) + getQtdPasteis(); }
-    /**
-     * @return tempo de cozimento.
-     */
-    public int tempoCozimento() { return (getQtdPizzas() * 4) + ((getQtdPasteis() * 2)); }
-    /**
-     * @return tempo de empacotamento.
-     */
-    public int tempoEmpacotamento() { return getQtdPizzas() + getQtdPasteis(); }
 }

@@ -5,30 +5,15 @@
  */
 
 public class Fila {
-    private Pedido[] vetorPedidos;
+    private Pedido[] fila;
+    private int quantidade;
     private int inicio;
     private int fim;
-    private int quantidade;
 
     // Contrutores.
     public Fila() {
-        this.vetorPedidos = new Pedido[1000];
+        this.fila = new Pedido[100];
         this.quantidade = 0;
-        this.inicio = 0;
-        this.fim = 0;
-    }
-    public Fila(int tamanho) {
-        this.quantidade = 0;
-        this.inicio = 0;
-        this.fim = 0;
-    }
-
-    /**
-     * Retorna o tamanho da fila;
-     * @return quantidade
-     */
-    public int tamanho() {
-        return quantidade;
     }
 
     /**
@@ -36,11 +21,11 @@ public class Fila {
      * @param elemento elemento a ser inserido
      */
     public void inserir(Pedido elemento) {
-        if (quantidade == vetorPedidos.length)
+        if (quantidade == fila.length)
             throw new FilaCheiaErro("Fila cheia!");
-        this.vetorPedidos[fim] = elemento;
+        this.fila[fim] = elemento;
         this.quantidade++;
-        fim = (fim + 1) % vetorPedidos.length;
+        fim = (fim + 1) % fila.length;
     }
 
     /**
@@ -50,10 +35,9 @@ public class Fila {
     public Pedido retirar() {
         if (quantidade == 0)
             throw new FilaVaziaErro("Fila Vazia!");
-        Pedido aux = vetorPedidos[inicio];
+        Pedido aux = fila[inicio];
         this.quantidade--;
-        this.inicio = (inicio + 1) % vetorPedidos.length;
-        this.vetorPedidos[inicio] = null;
+        this.inicio = (inicio + 1) % fila.length;
         return aux;
     }
 
@@ -62,14 +46,28 @@ public class Fila {
      * @return primeiro elemento
      */
     public Pedido inicio() {
-        return vetorPedidos[inicio];
+        if (quantidade == 0)
+            throw  new FilaVaziaErro("Fila vazia!");
+        return fila[inicio];
     }
+
+    /**
+     * Retorna o tamanho da fila;
+     * @return quantidade
+     */
+    public int tamanho() { return this.quantidade; }
+
+    /**
+     * Retorna true se a fila estiver vazia e false caso o contrário.
+     * @return true ou false.
+     */
+    public boolean estaVazia() { return (quantidade == 0); }
 
     /**
      * Método que esvazia a fila reiniciando-a.
      */
     public void esvaziar() {
-        this.vetorPedidos = new Pedido[1000];
+        this.fila = new Pedido[1000];
         this.quantidade = 0;
         this.inicio = 0;
         this.fim = 0;
