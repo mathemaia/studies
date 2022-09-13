@@ -1,8 +1,8 @@
 public abstract class UnidadeDeProcessamento {
-    private final Fila fila = new Fila();
+    Fila fila = new Fila();
     private final Pedido[] processadores = new Pedido[3];
-    private int indiceProcessadorLivre;
-    private boolean processamentoFinalizado;
+    private Integer indiceProcessadorLivre;
+    private Integer idx = null;
     public Pedido pedido;
 
     /**
@@ -12,7 +12,7 @@ public abstract class UnidadeDeProcessamento {
     public void colocaNaFila(Pedido pedido) {
         fila.inserir(pedido);
         this.pedido = pedido;
-        System.out.println("\n\n" + pedido + " entrou na fila.\n\n");
+        System.out.println("#" + pedido.getNumero() + " entrou na fila.\n");
     }
 
     /**
@@ -28,7 +28,6 @@ public abstract class UnidadeDeProcessamento {
                 break;
             }
         }
-
         return temProcessadorLivre;
     }
 
@@ -46,16 +45,47 @@ public abstract class UnidadeDeProcessamento {
     public void atribuiAoProcessadorLivre(Pedido pedido) {
         processadores[getIndiceProcessadorLivre()] = pedido;
 
-        System.out.println(pedido + " esta sendo processado.");
-        System.out.println("indiceProcessador: " + getIndiceProcessadorLivre());
+        //System.out.println(pedido + " esta sendo processado.");
+        //System.out.println("i: " + getIndiceProcessadorLivre());
     }
 
+    /**
+     * Retorna true se o pedido estiver finalizado
+     * @return true
+     */
     public boolean processamentoFinalizado() {
-        return processamentoFinalizado;
+        boolean valor = false;
+        for (int i = 0; i < processadores.length; i++) {
+            if ((processadores[i] != null) && (processadores[i].getTempoParaProcessar() == 0)) {
+                this.indiceProcessadorLivre = i;
+                valor = true;
+            } else if (processadores[i] != null){
+                processadores[i].decrementarTempo();
+                System.out.println("#" + processadores[i].getNumero() + ": " + processadores[i].getTempoParaProcessar() + "s");
+            }
+        }
+
+        return valor;
     }
 
+    /**
+     * Retorna o indice do processador livre para atribuir o objeto.
+     * @return indice
+     */
     public int getIndiceProcessadorLivre() {
         return this.indiceProcessadorLivre;
+    }
+
+    public Pedido concluirProcessamento() {
+        System.out.println(processadores[indiceProcessadorLivre].getNumero() + " pronto!");
+        Integer aux1 = indiceProcessadorLivre;
+        Pedido aux2 = processadores[indiceProcessadorLivre];
+
+        this.indiceProcessadorLivre = null;
+        processadores[aux1] = retiraDaFila();
+        System.out.println("#" + processadores[aux1].getNumero() + " está sendo processado...");
+
+        return aux2;
     }
 }
 

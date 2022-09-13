@@ -4,7 +4,6 @@ public class Pedido {
     private Integer qtdPasteis;
     private Integer instante;
     private Integer tempoParaProcessar;
-    private int tempoGasto;
 
     // Construtores.
     public Pedido() {
@@ -13,16 +12,13 @@ public class Pedido {
         this.instante = null;
         this.numero = null;
         this.tempoParaProcessar = null;
-        this.tempoGasto = 0;
     }
-    public Pedido(Integer qtdPizzas, Integer qtdPasteis,
-                  Integer instante, int numero) {
+    public Pedido(Integer qtdPizzas, Integer qtdPasteis, int numero, Integer instante) {
         this.qtdPizzas = qtdPizzas;
         this.qtdPasteis = qtdPasteis;
-        this.instante = instante;
         this.numero  = numero;
+        this.instante = instante;
         this.tempoParaProcessar = 0;
-        this.tempoGasto = 0;
     }
 
     // Setters.
@@ -31,7 +27,7 @@ public class Pedido {
     public void setQtdPasteis(Integer qtdPasteis) { this.qtdPasteis = qtdPasteis; }
     public void setInstante(Integer instante) { this.instante = instante; }
     public void setTempoParaProcessar(Integer tempoParaProcessar) { this.tempoParaProcessar = tempoParaProcessar; }
-    public void setTempoGasto(int tempoGasto) { this.tempoGasto = tempoGasto; }
+    public void decrementarTempo() { this.tempoParaProcessar--; }
 
     // Getters.
     public Integer getNumero() { return numero; }
@@ -39,10 +35,9 @@ public class Pedido {
     public Integer getQtdPasteis() { return qtdPasteis; }
     public Integer getInstante() { return instante; }
     public Integer getTempoParaProcessar() { return tempoParaProcessar; }
-    public int getTempoGasto() { return tempoGasto; }
 
     // Outros métodos.
     public void imprime() {
-
+        System.out.println("IMPRESSO");
     }
 }

@@ -23,10 +23,10 @@ public class Main {
                 pasteis++;
             }
         }
-
         return new Pedido(pizzas, pasteis, tempo, numero);
     }
 
+    // MAIN
     public static void main(String[] args) throws InterruptedException {
         Pedido saida;
         Random random = new Random();
@@ -46,14 +46,47 @@ public class Main {
                 Integer pasteis = pedido.getQtdPasteis();
                 Integer pizzas = pedido.getQtdPizzas();
 
-                // Montagem do pedido
+                // MONTAGEM
                 montagem.colocaNaFila(pedido);
                 montagem.setTempoNecessario(pedido.getQtdPasteis(), pedido.getQtdPizzas());
                 if (montagem.temProcessadorLivre()) {
-                    System.out.printf("PROCESSADOR #%d LIVRE\n", montagem.getIndiceProcessadorLivre());
-                    montagem.retiraDaFila();
+                    pedido = montagem.retiraDaFila();
                     montagem.atribuiAoProcessadorLivre(pedido);
                 }
+                if (montagem.processamentoFinalizado()) {
+                    Pedido p = montagem.concluirProcessamento();
+                    cozimento.colocaNaFila(p);
+                    cozimento.setTempoNecessario(p.getQtdPasteis(), p.getQtdPizzas());
+
+                    // COZIMENTO
+                    if (cozimento.temProcessadorLivre()) {
+                        pedido = cozimento.retiraDaFila();
+                        cozimento.atribuiAoProcessadorLivre(pedido);
+                    }
+                    if (cozimento.processamentoFinalizado()) {
+                        p = cozimento.concluirProcessamento();
+                        empacotamento.colocaNaFila(p);
+                        empacotamento.setTempoNecessario(p.getQtdPasteis(), p.getQtdPizzas());
+
+                        // EMPACOTAMENTO
+                        if (empacotamento.temProcessadorLivre()) {
+                            p = empacotamento.retiraDaFila();
+                            empacotamento.atribuiAoProcessadorLivre(p);
+                        }
+                        if (empacotamento.processamentoFinalizado()) {
+                            p = empacotamento.concluirProcessamento();
+                            p.imprime();
+                        }
+                    }
+
+
+                }
+
+
+
+
+
+
 
 
 
@@ -70,7 +103,7 @@ public class Main {
              */
 
 
-            Thread.sleep(2500);
+            //Thread.sleep(500);
             tempo++;
             numeroDoPedido++;
         } while (tempo < 8 * 60);

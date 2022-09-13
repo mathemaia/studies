@@ -10,4 +10,10 @@ public class Montagem extends UnidadeDeProcessamento {
     public int getTempoNecessario() {
         return pedido.getTempoParaProcessar();
     }
+    @Override
+    public void colocaNaFila(Pedido pedido) {
+        fila.inserir(pedido);
+        this.pedido = pedido;
+        System.out.println("\n#" + pedido.getNumero() + " entrou na MONTAGEM.\n");
+    }
 }

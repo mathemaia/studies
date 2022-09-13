@@ -12,7 +12,7 @@ public class Fila {
 
     // Contrutores.
     public Fila() {
-        this.fila = new Pedido[100];
+        this.fila = new Pedido[500];
         this.quantidade = 0;
     }
 
