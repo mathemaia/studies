@@ -1,3 +1,9 @@
+/**
+ * Classe Pedido com seus atributos e métodos.
+ * @author matheus maia
+ * @version 12-09-2022
+ */
+
 public class Pedido {
     private Integer numero;
     private Integer qtdPizzas;

@@ -1,3 +1,9 @@
+/**
+ * Classe que recebe herança da classe mãe UnidadeDeProcessamento.
+ * @author matheus maia
+ * @version 12-09-2022
+ */
+
 public class Montagem extends UnidadeDeProcessamento {
     /**
      * Modifica o atributo tempoParaProcessar do objeto para:
@@ -7,13 +13,21 @@ public class Montagem extends UnidadeDeProcessamento {
     public void setTempoNecessario(Integer pasteis, Integer pizzas) {
         pedido.setTempoParaProcessar((pizzas * 3)  + pasteis);
     }
-    public int getTempoNecessario() {
-        return pedido.getTempoParaProcessar();
-    }
+
+    /**
+     * Retorna o tempo necesário para o pedido ser processado.
+     * @return tempo necessário
+     */
+    public int getTempoNecessario() { return pedido.getTempoParaProcessar(); }
+
+    /**
+     * Método sobreescrito apena para trocar o nome do processador na impressão.
+     * @param pedido objeto a ser inserido.
+     */
     @Override
     public void colocaNaFila(Pedido pedido) {
         fila.inserir(pedido);
         this.pedido = pedido;
-        System.out.println("\n#" + pedido.getNumero() + " entrou na MONTAGEM.\n");
+        System.out.println("\n#" + pedido.getNumero() + " fila -> MONTAGEM.\n");
     }
 }

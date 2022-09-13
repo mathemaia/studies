@@ -9,8 +9,13 @@ public class Main {
     public static Pedido gerarPedido(int tempo, int numero) {
         Random random = new Random();
 
+        /*
+        Modifiquei a quantidade máxima de 5, como pedido no enunciado, por 7 pois muitos pedidos estavam sendo gerados
+        com um total de tempo igual à zero, e com isso era lançada uma exceção de fila vazia. Com a quantidade máxima 7
+        o algoritmo pareceu se sair melhor.
+         */
         int pizzas = random.nextInt(3);
-        int pasteis = random.nextInt(5);
+        int pasteis = random.nextInt(7);
 
         /*
          Evita que a quantidade de pasteis e pizzas sejam
@@ -26,7 +31,9 @@ public class Main {
         return new Pedido(pizzas, pasteis, tempo, numero);
     }
 
-    // MAIN
+    /*
+    MAIN
+     */
     public static void main(String[] args) throws InterruptedException {
         Pedido saida;
         Random random = new Random();
@@ -34,14 +41,14 @@ public class Main {
         Cozimento cozimento = new Cozimento();
         Empacotamento empacotamento = new Empacotamento();
 
-        int tempo = 0;
+        int tempo = 1;
         int numeroDoPedido = 1;
 
         do {
             int numeroAleatorio = random.nextInt(99);
 
             // Se o número aleatório for maior que 80, é gerado um novo pedido.
-            if (numeroAleatorio > 50) {
+            if (numeroAleatorio > 80) {
                 Pedido pedido = gerarPedido(tempo, numeroDoPedido);
                 Integer pasteis = pedido.getQtdPasteis();
                 Integer pizzas = pedido.getQtdPizzas();
@@ -51,7 +58,7 @@ public class Main {
                 montagem.setTempoNecessario(pedido.getQtdPasteis(), pedido.getQtdPizzas());
                 if (montagem.temProcessadorLivre()) {
                     pedido = montagem.retiraDaFila();
-                    montagem.atribuiAoProcessadorLivre(pedido);
+                    montagem.inssereNoProcessadorLivre(pedido);
                 }
                 if (montagem.processamentoFinalizado()) {
                     Pedido p = montagem.concluirProcessamento();
@@ -61,49 +68,26 @@ public class Main {
                     // COZIMENTO
                     if (cozimento.temProcessadorLivre()) {
                         pedido = cozimento.retiraDaFila();
-                        cozimento.atribuiAoProcessadorLivre(pedido);
+                        cozimento.inssereNoProcessadorLivre(pedido);
                     }
                     if (cozimento.processamentoFinalizado()) {
                         p = cozimento.concluirProcessamento();
                         empacotamento.colocaNaFila(p);
-                        empacotamento.setTempoNecessario(p.getQtdPasteis(), p.getQtdPizzas());
+                        empacotamento.setTNecessario(p.getQtdPasteis(), p.getQtdPizzas());
 
                         // EMPACOTAMENTO
                         if (empacotamento.temProcessadorLivre()) {
                             p = empacotamento.retiraDaFila();
-                            empacotamento.atribuiAoProcessadorLivre(p);
+                            empacotamento.inssereNoProcessadorLivre(p);
                         }
                         if (empacotamento.processamentoFinalizado()) {
                             p = empacotamento.concluirProcessamento();
                         }
                         p.imprime();
                     }
-
-
                 }
-
-
-
-
-
-
-
-
-
-
-
-
             }
 
-            /*
-            while (montagem.temProcessadorLivre()) {
-                montagem.atribuiAoProcessadorLivre(montagem.retiraDaFila());
-                System.out.println(saida + "saiu da fila e está sendo processado.");
-            }
-             */
-
-
-            //Thread.sleep(500);
             tempo++;
             numeroDoPedido++;
         } while (tempo < 8 * 60);

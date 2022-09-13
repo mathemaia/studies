@@ -1,5 +1,5 @@
 /**
- * Classe dedicada a manipular os elementos da fila e realizar suas operações.
+ * Classe com os métodos da Fila.
  * @author matheus
  * @version 04/09/2022
  */
