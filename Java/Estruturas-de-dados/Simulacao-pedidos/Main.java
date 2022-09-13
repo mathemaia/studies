@@ -75,8 +75,8 @@ public class Main {
                         }
                         if (empacotamento.processamentoFinalizado()) {
                             p = empacotamento.concluirProcessamento();
-                            p.imprime();
                         }
+                        p.imprime();
                     }
 
 
