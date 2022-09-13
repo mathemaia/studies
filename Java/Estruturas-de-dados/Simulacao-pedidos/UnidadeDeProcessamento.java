@@ -65,7 +65,7 @@ public abstract class UnidadeDeProcessamento {
                 valor = true;
             } else if (processadores[i] != null){
                 processadores[i].decrementarTempo();
-                System.out.println("#" + processadores[i].getNumero() + ": " + processadores[i].getTempoParaProcessar() + "s");
+                System.out.println("#" + processadores[i].getNumero() + ": " + processadores[i].getTempoParaProcessar() + "t");
             }
         }
         return valor;
@@ -84,7 +84,7 @@ public abstract class UnidadeDeProcessamento {
      * @return objeto que sai.
      */
     public Pedido concluirProcessamento() {
-        System.out.println(processadores[indiceProcessadorLivre].getNumero() + " pronto!");
+        System.out.println("\n** #" + processadores[indiceProcessadorLivre].getNumero() + " pronto!\n");
         Integer aux1 = indiceProcessadorLivre;
         Pedido aux2 = processadores[indiceProcessadorLivre];
 

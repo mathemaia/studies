@@ -28,6 +28,6 @@ public class Empacotamento extends UnidadeDeProcessamento {
     public void colocaNaFila(Pedido pedido) {
         fila.inserir(pedido);
         this.pedido = pedido;
-        System.out.println("\n#" + pedido.getNumero() + " fila -> EMPACOTAMENTO.\n");
+        System.out.println("\n#" + pedido.getNumero() + " -> EMPACOTAMENTO.\n");
     }
 }

@@ -1,5 +1,10 @@
 import java.util.Random;
 
+/**
+ * Classe principal.
+ * @author matheus maia
+ */
+
 public class Main {
     /**
      * Método que gera um novo pedido com as configurações definidas.
@@ -34,8 +39,8 @@ public class Main {
     /*
     MAIN
      */
-    public static void main(String[] args) throws InterruptedException {
-        Pedido saida;
+    public static void main(String[] args) {
+
         Random random = new Random();
         Montagem montagem = new Montagem();
         Cozimento cozimento = new Cozimento();
@@ -52,6 +57,7 @@ public class Main {
                 Pedido pedido = gerarPedido(tempo, numeroDoPedido);
                 Integer pasteis = pedido.getQtdPasteis();
                 Integer pizzas = pedido.getQtdPizzas();
+                Pedido p = new Pedido();
 
                 // MONTAGEM
                 montagem.colocaNaFila(pedido);
@@ -61,7 +67,7 @@ public class Main {
                     montagem.inssereNoProcessadorLivre(pedido);
                 }
                 if (montagem.processamentoFinalizado()) {
-                    Pedido p = montagem.concluirProcessamento();
+                    p = montagem.concluirProcessamento();
                     cozimento.colocaNaFila(p);
                     cozimento.setTempoNecessario(p.getQtdPasteis(), p.getQtdPizzas());
 
@@ -82,10 +88,11 @@ public class Main {
                         }
                         if (empacotamento.processamentoFinalizado()) {
                             p = empacotamento.concluirProcessamento();
+                            p.imprime(tempo);
                         }
-                        p.imprime();
                     }
                 }
+
             }
 
             tempo++;

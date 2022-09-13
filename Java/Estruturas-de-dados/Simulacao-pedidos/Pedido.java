@@ -15,11 +15,11 @@ public class Pedido {
     public Pedido() {
         this.qtdPizzas = null;
         this.qtdPasteis = null;
-        this.instante = null;
+        this.instante = 1;
         this.numero = null;
         this.tempoParaProcessar = null;
     }
-    public Pedido(Integer qtdPizzas, Integer qtdPasteis, int numero, Integer instante) {
+    public Pedido(Integer qtdPizzas, Integer qtdPasteis, Integer instante, int numero) {
         this.qtdPizzas = qtdPizzas;
         this.qtdPasteis = qtdPasteis;
         this.numero  = numero;
@@ -43,7 +43,13 @@ public class Pedido {
     public Integer getTempoParaProcessar() { return tempoParaProcessar; }
 
     // Outros métodos.
-    public void imprime() {
-        System.out.println("IMPRESSO");
+    public void imprime(int tempoFinal) {
+        System.out.println("\n****************************");
+        System.out.println("#" + getNumero());
+        System.out.println("entrou no tempo " + instante + ".");
+        System.out.println("tempo total: " + (tempoFinal - instante));
+        System.out.println("qtdPasteis: " + getQtdPasteis());
+        System.out.println("qtdPizzas: " + getQtdPizzas());
+        System.out.println("****************************");
     }
 }
