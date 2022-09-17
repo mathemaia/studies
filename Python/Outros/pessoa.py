@@ -1,8 +1,8 @@
 from datetime import datetime
+import random
 
 class Pessoa:
     ano_atual = int(datetime.strftime(datetime.now(), '%Y'))
-
 
     # Construtor
     def __init__(self, nome, idade, comendo = False, falando = False):
@@ -10,7 +10,6 @@ class Pessoa:
         self.idade = idade
         self.comendo = comendo
         self.falando = falando
-
 
     # Método para começar a falar
     def falar(self, assunto):
@@ -23,8 +22,7 @@ class Pessoa:
             return
         
         print(f'{self.nome} está falando sobre {assunto}!')
-        self.falando = True
-
+        self.falando = True 
 
     # Método para parar de falar
     def parar_de_falar(self):
@@ -34,7 +32,6 @@ class Pessoa:
         
         print(f'{self.nome} parou de falar.')
         self.falando = False
-
 
     # Método para começar a comer
     def comer(self, comida):
@@ -49,7 +46,6 @@ class Pessoa:
         print(f'{self.nome} está comendo {comida}!')
         self.comendo = True
 
-
     # Método para parar de comer
     def parar_de_comer(self):
         if not self.comendo:
@@ -59,20 +55,24 @@ class Pessoa:
         print(f'Ok, {self.nome} parou de comer.')
         self.comendo = False
 
-
     # Método que retorna o ano de nascimento
     def get_ano_nascimento(self):
         return self.ano_atual - self.idade
 
-
-    # Método de classe para calcular o ano de nascimento
+    # Método de classe para calcular o ano de nascimento.
+    # Acessa as variáveis do objeto e pode modifica-las.
     @classmethod
     def por_ano_nascimento(cls, nome, ano_nascimendo):
         idade = cls.ano_atual - ano_nascimendo
         return cls(nome, idade)
     
+    # Método estático que retorna um inteiro.
+    # Não pode acessar as variáveis do objeto - Programação funcional.
+    @staticmethod
+    def gera_id():
+        return random.randint(10000, 19999)
+
 
 ## MAIN
 if __name__ == '__main__':
-    p1 = Pessoa()
-
+    pass
