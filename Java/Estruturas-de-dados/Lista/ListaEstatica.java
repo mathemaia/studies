@@ -1,5 +1,10 @@
 package Listas;
 
+/**
+ * Classe que implementa uma lista linear usando arranjo (lista estática).
+ * @author Matheus Maia
+ */
+
 public class ListaEstatica {
     private final int TAMANHO_INICIAL = 10;
     private Integer[] dados;
@@ -50,6 +55,19 @@ public class ListaEstatica {
     }
 
     /**
+     * Adiciona um novo elemento na última posição da lista.
+     * @param elemento o que será inserido
+     */
+    public void add(Integer elemento) {
+        if (count == dados.length) {
+            setCapacity(dados.length * 2);
+        }
+
+        this.dados[count] = elemento;
+        this.count++;
+    }
+
+    /**
      * True ou False se estiver vazia.
      * @return true ou false.
      */
@@ -61,6 +79,16 @@ public class ListaEstatica {
      */
     public int size() { return this.count; }
 
-
+    /**
+     * Retorna um elemento de index fornecido e sem removê-lo.
+     * @param index índice do elemento.
+     * @return elemento da posição index.
+     * @throws IndexOutOfBoundsException se (index < 0 || index >= count)
+     */
+    public int get(int index) {
+        if (index < 0 || index >= count)
+            throw new IndexOutOfBoundsException("Index: " + index);
+        return this.dados[index];
+    }
 }
 
