@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 class Pessoa(ABC):
+    """Classe abstrata"""
     def __init__(self, nome, cpf, data_nascimento, estado_civil) -> None:
         self._nome = nome
         self._cpf = cpf
@@ -16,13 +17,21 @@ class Pessoa(ABC):
         pass
 
 class Medico(Pessoa):
+    """Subclasse de Pessoa"""
     pass
 
 class Enfermeiro(Pessoa):
+    """Subclasse de Pessoa"""
     pass
 
 class Paciente(Pessoa):
+    """Subclasse de Pessoa"""
     pass
 
 class Secretaria(Pessoa):
+    """Subclasse de Pessoa"""
     pass
+
+class Convenio:
+    pass
+
