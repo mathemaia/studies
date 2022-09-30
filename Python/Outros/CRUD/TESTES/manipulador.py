@@ -4,7 +4,7 @@ while True:
         escolha = int(input('\nInserir[1] / Ler[2] / Remover[3] / Sair[4]: '))
         print()
     except:
-        print('Escolha uma opção válida.\n')
+        print('\nEscolha uma opção válida.\n')
     
     if escolha == 1:
         # Insere uma nova linha
@@ -21,12 +21,29 @@ while True:
         with open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'r') as arquivo:
             for idx, linha in enumerate(arquivo):
                 print(f'{idx}   {linha}', end='')
+        print()
     elif escolha == 3:
         # Remove a linha escolhida
-        indice = int(input('Indice da linha : '))
+        #indice = int(input('Indice da linha : '))
+        matriz = []
+        f = open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'r')
+        for idx, linha in enumerate(f):
+                print(f'{idx}   {linha}', end='')
+                matriz.append(linha.strip().split('||'))
+        print()
+        remocao = int(input('Linha a ser removida: '))
+        print(matriz[remocao])
+        matriz.pop(remocao)
+        f.close()
         with open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'w') as arquivo:
-            for idx, linha in enumerate(arquivo):
-                pass
+            for i in range(len(matriz) - 1):
+                arquivo.writelines(f'{matriz[i]}||{matriz[i]}||{matriz[i]}||{matriz[i]}\n')
+
+            print('A linha', remocao, 'foir removida.')
+        f = open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'r')
+        print(f.read())
+        print()
+            
     else:
         # Termina o loop
         break

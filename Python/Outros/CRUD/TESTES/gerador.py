@@ -27,12 +27,13 @@ print(estado_civil)
 print()
 
 # Formata a saída das linhas
-for i in range(len(nomes)):
-    print(f'NOME: {nome_completo[i]}\nIDADE: {idade[i]}\nCIDADE: {cidade[i]}\nESTADO_CIVIL: {estado_civil[i]}')
-    print()
+#for i in range(len(nomes)):
+#    print(f'NOME: {nome_completo[i]}\nIDADE: {idade[i]}\nCIDADE: {cidade[i]}\nESTADO_CIVIL: {estado_civil[i]}')
+#    print()
 
-#with open('/home/matheus/PythonProjects/testes/dados/dados.csv', 'w',  newline='\n') as dados:
-#    for i in range(20):
-#        dados.writelines(f'{i}\n')
-#    print(dados.fileno())
+with open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'w') as dados:
+    for i in range(12):
+        dados.write(f'{nome_completo[i]}||{idade[i]}||{cidade[i]}||{estado_civil[i]}')
+        if i != 11:
+            dados.write('\n')
  
