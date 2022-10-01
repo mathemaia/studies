@@ -6,7 +6,7 @@ package Listas;
 
 public class ListaEncadeada {
     // Classe interna Nodo.
-    private class Nodo {
+    private static class Nodo {
         public Integer elemento;
         public Nodo proximo;
 
