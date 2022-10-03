@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Classe que implementa uma lista encadeada (alocação dinâmica).
  * @author Matheus Maia
- * @version 01-10-2022
+ * @version 02-10-2022
  */
 
 public class ListaEncadeada {
@@ -118,17 +118,16 @@ public class ListaEncadeada {
      * @return elemento a ser retornado.
      */
     public Integer get(int indice) {
-        Nodo aux = this.head;
-
         // Lança uma exceção se o indice passado for inválido.
-        if (indice < 0 || indice > this.count)
+        if (indice < 0 || indice >= this.count)
             throw new IndexOutOfBoundsException("Indice invalido!");
 
         // Retorna o tail se o indice for o deste.
-        if (indice == this.count)
+        if (indice == this.count - 1)
             return this.tail.elemento;
 
         // Procura pelo indice passado.
+        Nodo aux = this.head;
         for (int i = 0; i < indice; i++) {
             aux = aux.proximo;
         }
@@ -166,11 +165,13 @@ public class ListaEncadeada {
                     tail.proximo = null;
                 // ...e o elemento estiver no meio da lista.
                 } else {
+                    assert ant != null;
                     ant.proximo = aux.proximo;
                 }
                 this.count--;
             }
 
+            assert ant != null;
             ant = ant.proximo;
             aux = aux.proximo;
         }
@@ -218,10 +219,99 @@ public class ListaEncadeada {
         return aux.elemento;
     }
 
-    // indexOf()
-    // contains()
-    // countOccurencs()
-    // sublist()
-    // addIncreasingOrder()
+    /**
+     * Retorna o indice da primeira aparição do elemento passado como parâmetro.
+     * @param elemento elemento a ser buscado.
+     * @return indice do elemento ou -1 se ele não existir.
+     */
+    public int indexOf(Integer elemento) {
+        Nodo aux = this.head;
+        int indice = 0;
 
+        // Procura pelo elemento na lista.
+        for (int i = 0; i < this.count; i++) {
+            if (Objects.equals(aux.elemento, elemento) ) return i;
+
+            aux = aux.proximo;
+        }
+
+        return -1;
+    }
+
+    /**
+     * Procura o elemento passado como parâmetro e retorna um valor booleano.
+     * @param elemento elemento a ser procurado.
+     * @return true ou false.
+     */
+    public boolean contains(Integer elemento) {
+        Nodo aux = this.head;
+
+        for (int i = 0; i < this.count; i++) {
+            if (Objects.equals(aux.elemento, elemento)) return true;
+            aux = aux.proximo;
+        }
+
+        return false;
+    }
+
+    /**
+     * Conta o número de ocorrências do elemento passado como parâmetro.
+     * @param elemento elemento a ser contabilizado.
+     * @return quantidade de vezes que ele aparece na lista.
+     */
+    public int countOccurrences(Integer elemento) {
+        Nodo aux = this.head;
+        int count = 0;
+
+        for (int i = 0; i < this.count; i++) {
+            if (Objects.equals(aux.elemento, elemento)) count++;
+            aux = aux.proximo;
+        }
+
+        return count;
+    }
+
+    /**
+     * Retorna um vetor que contém os elementos da lista original entre os indices passados como argumento.
+     * @param from indice inicial da lista.
+     * @param to indice final da lista.
+     * @return sublista.
+     */
+    public Integer[] sublist(int from, int to) {
+        // Se o tamanho for negativo ou zero lança uma exceção.
+        if ((to <= from) || (to > this.count) || (from < 0))
+            throw new IndexOutOfBoundsException("Indice invalido.");
+
+        Nodo aux = this.head;
+        Integer[] sublista = new Integer[to - from];
+        int count = 0;
+
+        for (int i = 0; i < this.count; i++) {
+            if ((i >= from) && (i < to)) {
+                sublista[count] = aux.elemento;
+                count++;
+            }
+            aux = aux.proximo;
+        }
+
+        return sublista;
+    }
+
+    /**
+     * Retorna a lista em formato string.
+     * @return lista em formato String.
+     */
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+
+        Nodo aux = this.head;
+
+        while (aux != null) {
+            s.append(aux.elemento.toString()).append(" ");
+            aux = aux.proximo;
+        }
+
+        return s.toString();
+    }
 }
