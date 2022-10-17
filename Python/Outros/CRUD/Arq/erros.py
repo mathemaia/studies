@@ -1,0 +1,3 @@
+
+class Erros(Exception):
+    pass
