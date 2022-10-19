@@ -1,49 +1,49 @@
-while True:
+escolha = 0
+
+while escolha != 4:
     # Pede uma entrada e só continua se for inserido um número
-    try:
-        escolha = int(input('\nInserir[1] / Ler[2] / Remover[3] / Sair[4]: '))
-        print()
-    except:
-        print('\nEscolha uma opção válida.\n')
-    
+    while True:
+        escolha = input('Inserir[1] / Ler[2] / Remover[3] / Sair[4]: ')
+        try:
+            escolha = int(escolha)
+        except:
+            print('Por favor, escolha uma opção valida.\n')
+
+        if escolha > 4:
+            print('Por favor, escolha uma opção valida.\n')
+            continue
+        else:
+            break
+
+    # Insere uma nova linha
     if escolha == 1:
-        # Insere uma nova linha
-        with open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'a+') as arquivo:
-            print('\n*****Inserir*****')
-            nome = str(input('Nome: '))
-            idade = int(input('Idade: '))
-            cidade = str(input('Cidade: '))
-            estado = str(input('Estado_Cívil: '))
+        with open('/home/matheus/PycharmProjects/pythonProject/POD/CRUD/.testes/dados.dat', 'a+') as arquivo:
+            print('\nINSERIR:\n')
+            nome = str(input('NOME: '))
+            idade = int(input('IDADE: '))
+            cidade = str(input('CIDADE: '))
+            estado = str(input('ESTADO_CIVIL: '))
             arquivo.write(f'\n{nome}||{idade}||{cidade}||{estado}')
             print()
+    # Lê e imprime todas as linhas do arquivo
     elif escolha == 2:
-        # Lê e imprime todas as linhas do arquivo
-        with open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'r') as arquivo:
+        with open('/home/matheus/PycharmProjects/pythonProject/POD/CRUD/.testes/dados.dat', 'r') as arquivo:
             for idx, linha in enumerate(arquivo):
-                print(f'{idx}   {linha}', end='')
-        print()
+                print(f'{idx}       {linha}', end='')
+        print('\n\n')
+    # Remove a linha escolhida pela coluna NOME
     elif escolha == 3:
-        # Remove a linha escolhida
-        #indice = int(input('Indice da linha : '))
         matriz = []
-        f = open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'r')
-        for idx, linha in enumerate(f):
-                print(f'{idx}   {linha}', end='')
+        f = open('/home/matheus/PycharmProjects/pythonProject/POD/CRUD/.testes/dados.dat', 'r')
+        for linha in f:
                 matriz.append(linha.strip().split('||'))
         print()
-        remocao = int(input('Linha a ser removida: '))
-        print(matriz[remocao])
+        while True:
+            remocao = int(input('Linha a ser removida: '))
+            if remocao > len(matriz) + 1:
+                print('Por favor, escolha uma opção valida.')
+            else:
+                break
         matriz.pop(remocao)
         f.close()
-        with open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'w') as arquivo:
-            for i in range(len(matriz) - 1):
-                arquivo.writelines(f'{matriz[i]}||{matriz[i]}||{matriz[i]}||{matriz[i]}\n')
-
-            print('A linha', remocao, 'foir removida.')
-        f = open('/home/matheus/PythonProjects/testes/dados/dados.dat', 'r')
-        print(f.read())
-        print()
-            
-    else:
-        # Termina o loop
-        break
+        print('A linha', remocao, 'foir removida.')
