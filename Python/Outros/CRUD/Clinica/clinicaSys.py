@@ -47,12 +47,17 @@ class Medico(Pessoa):
 # ENFERMEIRO
 class Enfermeira(Pessoa):
     """Subclasse de Pessoa"""
+    def __init__(self, nome: str, cpf: int, data_nascimento: str, estado_civil: str, coren: int) -> None:
+        super().__init__(nome, cpf, data_nascimento, estado_civil)
+        self._coren = coren
+
     def __str__(self) -> str:
         """Retorna os atributos do objeto em formato string"""
         return f'NOME: {self._nome}\n' \
                f'CPF: {self._cpf}\n' \
                f'D_NASCIMENTO: {self._data_nascimento}\n' \
-               f'E_CIVIL: {self._estado_civil}\n'
+               f'E_CIVIL: {self._estado_civil}\n' \
+               f'COREN: {self._coren}\n'
 
     def cadastrar_dados(self):
         pass
