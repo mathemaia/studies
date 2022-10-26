@@ -10,8 +10,8 @@ public class ListaDuplamenteEncadeada {
     // Contador de elementos.
     private int count;
     // Sentinelas.
-    private Nodo header;
-    private Nodo trailer;
+    private final Nodo header;
+    private final Nodo trailer;
 
     /**
      * Classe interna Nodo. Contém um elemento, uma referência para o Nodo anterior outra para o próximo
@@ -32,11 +32,11 @@ public class ListaDuplamenteEncadeada {
      * Construtor.
      */
     public ListaDuplamenteEncadeada() {
-        this.count = 0;
         this.header = new Nodo(null);
-        this.header.next = this.trailer;
         this.trailer = new Nodo(null);
+        this.header.next = this.trailer;
         this.trailer.previous = this.header;
+        this.count = 0;
     }
 
     /**
