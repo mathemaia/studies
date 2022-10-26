@@ -15,9 +15,8 @@ Classe que implementa uma lista linear usando arranjo (lista estática).
 
 # ListaDuplamenteEncadeada.java
 * **add(**e**)**: insere um elemento no final da lista.
-* **addByIndex(**index, e**)**: insere um elemento em determinada posição (index) da lista.
+* **set(**index, e**)**: insere um elemento em determinada posição (index) da lista.
 * **get(**index, e**)**: retorna o elemento de determinada posição index.
-* **set(**index, e**)**: define o elemento de determinada posição index.
 * **remove(**e**)**: remove a primeira ocorrência do elemento.
 * **isEmpty()**: retorna *true* ou *false* para o estado da lista - se está ou não vazia.
 * **size()**: retorna o tamanho atual.
