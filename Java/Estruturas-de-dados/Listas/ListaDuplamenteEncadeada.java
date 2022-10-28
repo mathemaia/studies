@@ -7,8 +7,6 @@ import java.util.Objects;
  */
  
 public class ListaDuplamenteEncadeada {
-    // Referência que aponta pra a posição corrente na lista.
-    private Nodo current;
     // Contador de elementos.
     private int count;
     // Sentinelas.
