@@ -1,3 +1,4 @@
+package Listas;
 import java.util.Objects;
 
 /**
@@ -11,8 +12,8 @@ public class ListaEncadeada {
      * Classe interna Nodo. Contém um elemento e uma referência para o próximo.
      */
     private static class Nodo {
-        public Integer elemento;
-        public Nodo proximo;
+        public Integer element;
+        public Nodo next;
 
         /**
          * Construtor.
@@ -20,12 +21,12 @@ public class ListaEncadeada {
          * @param proximo referência ao próximo elemento da cadeia.
          */
         public Nodo(Integer elemento, Nodo proximo) {
-            this.elemento = elemento;
-            this.proximo = proximo;
+            this.element = elemento;
+            this.next = proximo;
         }
         public Nodo(Integer elemento) {
-            this.elemento = elemento;
-            this.proximo = null;
+            this.element = elemento;
+            this.next = null;
         }
     }
 
@@ -71,7 +72,7 @@ public class ListaEncadeada {
     }
 
     /**
-     * Adiciona um elemento no final da lista.
+     * Adiciona um elemento na posição passada como parâmetro.
      * @param elemento elemento a ser adicionado.
      * @param indice posição que o elemento será inserido.
      * @throws IndexOutOfBoundsException se o índice passado for inválido.
@@ -90,23 +91,38 @@ public class ListaEncadeada {
                 this.tail = aux;
             // ...e a lista não estiver vazia:
             } else {
-                aux.proximo = head;
+                aux.next = head;
             }
             this.head = aux;
         // Se o índice for a última posição:
         } else if (indice == this.count) {
-            this.tail.proximo = aux;
+            this.tail.next = aux;
             this.tail = aux;
         // Se o índice estiver no meio da lista.
         } else {
             Nodo ant = head;
             for (int i = 0; i < indice; i++) {
-                ant = ant.proximo;
+                ant = ant.next;
             }
-            aux.proximo = ant.proximo;
-            ant.proximo = aux;
+            aux.next = ant.next;
+            ant.next = aux;
         }
 
+        this.count++;
+    }
+
+    /**
+     * Adiciona o elemento passado na última posição da lista.
+     * @param elemento elemento a ser inserido.
+     */
+    public void add(Integer elemento) {
+        Nodo aux = new Nodo(elemento);
+        if (head == null) {
+            this.head = aux;
+        } else {
+            this.tail.next = aux;
+        }
+        this.tail = aux;
         this.count++;
     }
 
@@ -122,15 +138,15 @@ public class ListaEncadeada {
 
         // Retorna o tail se o indice for o deste.
         if (indice == this.count - 1)
-            return this.tail.elemento;
+            return this.tail.element;
 
         // Procura pelo indice passado.
         Nodo aux = this.head;
         for (int i = 0; i < indice; i++) {
-            aux = aux.proximo;
+            aux = aux.next;
         }
 
-        return aux.elemento;
+        return aux.element;
     }
 
     /**
@@ -144,34 +160,34 @@ public class ListaEncadeada {
             throw new ListaVaziaErro("Lista vazia!");
 
         // Se o elemento for o primeiro da lista:
-        if (Objects.equals(this.head.elemento, elemento)) {
-            this.head = this.head.proximo;
+        if (Objects.equals(this.head.element, elemento)) {
+            this.head = this.head.next;
             // Se a lista conter apenas um elemento:
             if (this.count == 1) this.tail = null;
             this.count--;
         }
 
         // Percorre a lista até encontrar o elemento.
-        Nodo aux = this.head.proximo;
+        Nodo aux = this.head.next;
         Nodo ant = this.head;
         while (aux != null) {
             // Se o elemento a ser removido foi encontrado...
-            if (aux.elemento.equals(elemento)) {
+            if (aux.element.equals(elemento)) {
                 // ...e o elemento for o último.
                 if (aux == this.tail) {
                     this.tail = ant;
-                    tail.proximo = null;
+                    tail.next = null;
                 // ...e o elemento estiver no meio da lista.
                 } else {
                     assert ant != null;
-                    ant.proximo = aux.proximo;
+                    ant.next = aux.next;
                 }
                 this.count--;
             }
 
             assert ant != null;
-            ant = ant.proximo;
-            aux = aux.proximo;
+            ant = ant.next;
+            aux = aux.next;
         }
         this.count--;
     }
@@ -188,8 +204,8 @@ public class ListaEncadeada {
 
         // Se o elemento a ser removido for o primeiro.
         if (indice == 0) {
-            Integer elemento = head.elemento;
-            this.head = this.head.proximo;
+            Integer elemento = head.element;
+            this.head = this.head.next;
 
             // Se houver apenas 1 elemento na lista.
             if (count == 1) {
@@ -204,17 +220,17 @@ public class ListaEncadeada {
         Nodo ant = null;
         for (int i = 0; i < indice; i++) {
             ant = aux;
-            aux = aux.proximo;
+            aux = aux.next;
         }
         if (aux == this.tail) {
             this.tail = ant;
-            this.tail.proximo = null;
+            this.tail.next = null;
         } else {
-            ant.proximo = aux.proximo;
+            ant.next = aux.next;
         }
 
         this.count--;
-        return aux.elemento;
+        return aux.element;
     }
 
     /**
@@ -228,9 +244,9 @@ public class ListaEncadeada {
 
         // Procura pelo elemento na lista.
         for (int i = 0; i < this.count; i++) {
-            if (Objects.equals(aux.elemento, elemento) ) return i;
+            if (Objects.equals(aux.element, elemento) ) return i;
 
-            aux = aux.proximo;
+            aux = aux.next;
         }
 
         return -1;
@@ -245,8 +261,8 @@ public class ListaEncadeada {
         Nodo aux = this.head;
 
         for (int i = 0; i < this.count; i++) {
-            if (Objects.equals(aux.elemento, elemento)) return true;
-            aux = aux.proximo;
+            if (Objects.equals(aux.element, elemento)) return true;
+            aux = aux.next;
         }
 
         return false;
@@ -262,8 +278,8 @@ public class ListaEncadeada {
         int count = 0;
 
         for (int i = 0; i < this.count; i++) {
-            if (Objects.equals(aux.elemento, elemento)) count++;
-            aux = aux.proximo;
+            if (Objects.equals(aux.element, elemento)) count++;
+            aux = aux.next;
         }
 
         return count;
@@ -286,13 +302,34 @@ public class ListaEncadeada {
 
         for (int i = 0; i < this.count; i++) {
             if ((i >= from) && (i < to)) {
-                sublista[count] = aux.elemento;
+                sublista[count] = aux.element;
                 count++;
             }
-            aux = aux.proximo;
+            aux = aux.next;
         }
 
         return sublista;
+    }
+
+    /**
+     * Organiza a lista.
+     */
+    public void organize() {
+        // Se a lista estiver vazia, lança um erro.
+        if (this.count == 0)
+            throw new ListaVaziaErro("A lista está vazia!");
+
+        for (int i = 0; i < this.count - 1; i++) {
+            Nodo aux = this.head;
+            for (int j = 0; j < this.count - 1; j++) {
+                if (aux.element < aux.next.element) {
+                    Nodo menor = new Nodo(aux.next.element);
+                    aux.next.element = aux.element;
+                    aux.element = menor.element;
+                }
+                aux = aux.next;
+            }
+        }
     }
 
     /**
@@ -306,8 +343,8 @@ public class ListaEncadeada {
         Nodo aux = this.head;
 
         while (aux != null) {
-            s.append(aux.elemento.toString()).append(" ");
-            aux = aux.proximo;
+            s.append(aux.element.toString()).append(" ");
+            aux = aux.next;
         }
 
         return s.toString();
