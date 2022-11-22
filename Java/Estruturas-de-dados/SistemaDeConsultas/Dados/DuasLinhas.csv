@@ -1,3 +1,0 @@
-data;hora;idade;sexo;sit_vitima;log1;tipo_acid;auto;taxi;onibus_urb;onibus_met;onibus_int;caminhao;moto;carroca;bicicleta;outro;lotacao;dia_sem;periododia;fx_et;tipo_veic
-01/01/2017 00:00;19:15:00.0000000;47;MASCULINO;PEDESTRE;AV BENTO GONCALVES;ATROPELAMENTO;1;0;0;0;0;0;0;0;0;0;0;DOMINGO;NOITE;46 A 59;NENHUM
-01/01/2017 00:00;19:10:00.0000000;35;MASCULINO;CONDUTOR;AV IGNES E FAGUNDES;ABALROAMENTO;1;0;1;0;0;0;0;0;0;0;0;DOMINGO;NOITE;26 A 35;ONIBUS URBANO
