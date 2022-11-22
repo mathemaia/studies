@@ -1,7 +1,8 @@
 /**
- * Classe com um método de busca binária.
+ * Classe com o método de busca binária.
+ * OBS: É necessário que o vetor esteja ordenado de forma crescente.
  * @author matheus maia
- * @version 21-09-2022
+ * @version 21-11-2022
  */
 
 public class BuscaBinaria {
