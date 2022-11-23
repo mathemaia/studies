@@ -5,7 +5,7 @@
  * @version 21-11-2022
  */
 
-public class BuscaBinaria {
+public class AlgoritmoDeBusca {
     /**
      * Método que faz a busca de forma recursiva.
      * @param numero numero a ser procurado.
