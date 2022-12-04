@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Esta classe contém os métodos de ordenação Bubble-Sort, Insertion-Sort, Merge-Sort e Quick-Sort.
@@ -48,7 +47,7 @@ public class AlgoritmosDeOrdenacao {
 
     /**
      * Merge-Sort: faz a ordenação de forma recursiva, dividindo o vetor em metades cada vez menores.
-     * Complexidade: O(n) ou O(n log2n)
+     * Complexidade: O(n) ou O(n log2(n))
      * @param vetor  vetor a ser organizado.
      */
     public static void mergeSort(int[] vetor) {
@@ -84,13 +83,53 @@ public class AlgoritmosDeOrdenacao {
         }
     }
 
+    /**
+     * Quick-Sort: Faz a ordenação a partir de um pivô, dividindo em subarrays menores e maiores que o pivô.
+     * @param vetor vetor a ser organizado.
+     */
+    public static void quickSort(int[] vetor, int low, int high) {
+        int pivo = vetor[vetor.length / 2];
+        int i = 0;
+        int j = vetor.length - 1;
+
+        while (i != j) {
+            // Percorre o vetor, começando do inicio, até que o ponteiro aponte para um valor MAIOR que o pivo
+            while (low < pivo) {
+                i++;
+                low = vetor[i];
+            }
+
+            // Percorre o vetor, começando do fim, até que o ponteiro aponte para um valor MENOR que o pivo.
+            while (high > pivo) {
+                j--;
+                high = vetor[j];
+            }
+
+            // Faz a troca dos valores no vetor
+            int aux = vetor[j];
+            vetor[j] = vetor[i];
+            vetor[i] = aux;
+
+            // Atualiza os ponteiros
+            high = vetor[j];
+            low = vetor[i];
+        }
+
+        // Divide em um subvetor só com os valores MENORES que o pivo
+        if (vetor[0] != vetor[i]) {
+            quickSort(vetor, vetor[0], vetor[i]);
+        }
+
+        // Divide em um sub-vetor só com os valroes maiores que o pivo
+        if (vetor[i + 1] != vetor[vetor.length - 1]) {
+            quickSort(vetor, vetor[i + 1], vetor[vetor.length - 1]);
+        }
+    }
 
     public static void main(String[] args) {
-        int[] i = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-
-        int[] j = Arrays.copyOfRange(i, 0, i.length/2);
-
-        System.out.println(Arrays.toString(Arrays.copyOfRange(i, 0, i.length/2)));
+        int[] i = {3, 8, 5, 7, 0, 2, 9, 1, 4, 6};
+        quickSort(i, i[0], i[i.length - 1]);
+        System.out.println(Arrays.toString(i));
 
     }
 }
