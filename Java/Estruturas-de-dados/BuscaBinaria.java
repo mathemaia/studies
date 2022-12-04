@@ -1,11 +1,11 @@
 /**
  * Classe com o método de busca binária.
- * OBS: É necessário que o vetor esteja ordenado de forma crescente.
+ * OBS: Para realizar a busca binária é necessário que o vetor esteja ordenado de forma crescente .
  * @author matheus maia
  * @version 21-11-2022
  */
 
-public class AlgoritmoDeBusca {
+public class BuscaBinaria {
     /**
      * Método que faz a busca de forma recursiva.
      * @param numero numero a ser procurado.

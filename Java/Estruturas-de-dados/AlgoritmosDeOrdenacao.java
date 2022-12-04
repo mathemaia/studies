@@ -61,30 +61,30 @@ public class AlgoritmosDeOrdenacao {
         // Divide o vetor em dois: S1 (primeira metade) e S2 (segunda metade).
         int mid = n / 2;
         int[] S1 = Arrays.copyOfRange(vetor, 0, mid);
-        System.out.println(Arrays.toString(S1));
         int[] S2 = Arrays.copyOfRange(vetor, mid, n);
-        System.out.println(Arrays.toString(S2));
 
-        System.out.println();
-
-        // Organização por recursão.
+        // Ordena as cópias
         mergeSort(S1);
         mergeSort(S2);
 
-        // Faz o merge - junta os resultados de forma organizada.
+        // Faz o merge dos dois vetores passados como parâmetro, que juntos formam o vetor passado como parâmetro
         int i = 0;
         int j = 0;
         while ((i + j) < vetor.length) {
+            // Se o S1[i] é o MENOR, então:
             if (j == S2.length || (i < S1.length && S1[i] < S2[j])) {
-                // Copia o i-ésimo elemento de S1 e incrementa i.
                 vetor[i + j] = S1[i];
                 i++;
+            // Se o S2[j] é o MENOR, então:
             } else {
-                // Copia o j-ésimo elemento de S2 e incrementa j.
                 vetor[i + j] = S2[j];
                 j++;
             }
         }
+    }
+
+    public static void merge(int[] S1, int[] S2, int[] vetor) {
+
     }
 
     public static void main(String[] args) {
