@@ -48,6 +48,7 @@ public class AlgoritmosDeOrdenacao {
 
     /**
      * Merge-Sort: faz a ordenação de forma recursiva, dividindo o vetor em metades cada vez menores.
+     * Complexidade: O(n) ou O(n log2n)
      * @param vetor  vetor a ser organizado.
      */
     public static void mergeSort(int[] vetor) {
@@ -83,18 +84,13 @@ public class AlgoritmosDeOrdenacao {
         }
     }
 
-    public static void merge(int[] S1, int[] S2, int[] vetor) {
-
-    }
 
     public static void main(String[] args) {
-        Random random = new Random();
-        int[] vetor = {7, 8, 5, 7, 1, 1, 8, 9, 3, 1};
+        int[] i = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
 
-        System.out.println(Arrays.toString(vetor) + "\n");
-        mergeSort(vetor);
+        int[] j = Arrays.copyOfRange(i, 0, i.length/2);
 
-        System.out.println(Arrays.toString(vetor));
+        System.out.println(Arrays.toString(Arrays.copyOfRange(i, 0, i.length/2)));
 
     }
 }
