@@ -14,30 +14,27 @@ public class BuscaBinaria {
      * @param high referência do maior
      * @return índice do número.
      */
-    public static int buscaBinaria(int numero, int[] vetor, int low, int high) {
+    public static int buscaBinaria(int numero, int low, int high, int[] vetor) {
         int mid = (low + high) / 2;
 
-        // Se encontrar.
-        if (numero == vetor[mid]) {
-            return mid;
-        }
-
         // Se não encontrar, retorna -1.
-        if (low == high) {
+        if (low == high && numero != vetor[mid]) {
             return -1;
         }
 
         // Faz a busca recursiva.
         if (numero > vetor[mid]) {
-            return buscaBinaria(numero, vetor, mid + 1, high);
+            return buscaBinaria(numero, mid + 1, high, vetor);
+        } else if (numero < vetor[mid]){
+            return buscaBinaria(numero, 0, mid - 1, vetor);
         } else {
-            return buscaBinaria(numero, vetor, low, mid -1);
+            return mid;
         }
     }
 
     public static void main(String[] args) {
         int[] vetor = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-        System.out.println(buscaBinaria(2, vetor, 0, vetor.length));
+        System.out.println(buscaBinaria(14, 0, vetor.length - 1, vetor));
     }
 }
 
