@@ -43,7 +43,7 @@ public class ListaDuplamenteEncadeada {
      * Adiciona um elemento à última posição da lista.
      * @param elemento elemento a ser inserido.
      */
-    public void add(Integer elemento) {
+    public void append(Integer elemento) {
         Nodo aux = new Nodo(elemento);
 
         // Conecta o nodo na última posição da lista.
@@ -66,7 +66,7 @@ public class ListaDuplamenteEncadeada {
             throw new IndexOutOfBoundsException("Indice inválido!");
 
         // Se o índice for igual ao tamanho atual da lista, adiciona no fim.
-        if (this.count == indice) add(elemento);
+        if (this.count == indice) append(elemento);
 
         // Percorre a lista até o índice passado.
         Nodo aux = new Nodo(elemento);
