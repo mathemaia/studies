@@ -1,0 +1,1 @@
+A estrutura de dados Heap é um tipo de fila de prioridade organizada em formato de árvore binária. Este código contém um heap em estruturado em um array mas que se comporta da mesma forma que uma árvore binária.
