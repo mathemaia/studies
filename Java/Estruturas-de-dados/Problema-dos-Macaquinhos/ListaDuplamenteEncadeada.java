@@ -1,4 +1,4 @@
-package Alest2;
+package Trabalho;
 
 import java.util.Objects;
 

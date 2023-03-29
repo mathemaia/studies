@@ -1,4 +1,4 @@
-package Alest2;
+package Trabalho;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,47 +7,56 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner in = new Scanner(new File("src/Alest2/infos/casos/caso1000.txt"));
-
+        Scanner in = new Scanner(new File("src/Trabalho/infos/casos/caso0010.txt"));
         ListaDuplamenteEncadeada listaDeMacaquinhos = new ListaDuplamenteEncadeada();
-
-        int i = 0;
+        int idx = 0;
 
         // Separa as infos de cada linha e instancia os objetos Macaquinhos
         while (in.hasNextLine()) {
-            if (i > 0) {
+            if (idx > 0) {
                 // Transforma a linha em um vetor
                 String[] linha = in.nextLine().split(" : ");
 
-                // Cria um vetor com as quantidades de pedrinha
-                int[] pedrinhas = Arrays.stream(linha[2].split(" ")).mapToInt(Integer::parseInt).toArray();
-                // Quantidade de coquinhos
-                int coquinhos = Integer.parseInt(linha[1].strip());
                 // Numero de identificação do Macaquinho
                 int numero = Integer.parseInt(linha[0].split(" ")[1]);
-                // Para onde enviar caso par
+                // Para onde enviar os coquinhos com quantidade par de pedrinhas
                 int par = Integer.parseInt(linha[0].split(" ")[4]);
-                // Para onde enviar caso impar
+                // Para onde enviar os coquinhos com quantidade impar de pedrinhas
                 int impar = Integer.parseInt(linha[0].split(" ")[7]);
+                // Quantidade total de coquinhos
+                int coquinhos = Integer.parseInt(linha[1].strip());
+                // Separa o vetor de coquinhos em um vetor de coquinhos com numero par e impar de pedrinhas
+                int[] aux = Arrays.stream(linha[2].split(" ")).mapToInt(Integer::parseInt).toArray();
+                int[] coquinhosPares = Arrays.stream(aux).filter(n -> n % 2 == 0).toArray();
+                int[] coquinhosImpares = Arrays.stream(aux).filter(n -> n % 2 != 0).toArray();
 
-                /*
-                Criar uma lista duplamente encadeada e fazer append dos objetos instanciados
-                 */
-
-                listaDeMacaquinhos.append(new Macaquinho(numero, par, impar, coquinhos, pedrinhas));
-            // Ignora a primeira linha (que com a qtd de iterações)
+                // Instancia o objeto Macaquinho e insere na lista duplamente encadeada
+                listaDeMacaquinhos.append(new Macaquinho(numero, par, impar, coquinhos, coquinhosPares, coquinhosImpares));
             } else {
                 in.nextLine();
             }
 
-            i++;
+            idx++;
         }
 
-        System.out.println("tamanho: " + listaDeMacaquinhos.size());
 
-        for (int j = 0; j < listaDeMacaquinhos.size(); j++) {
-            System.out.println(Arrays.toString(listaDeMacaquinhos.getNode(j).getMacaquinho().getPedrinhas()));
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < listaDeMacaquinhos.size(); j++) {
+                // Macaquinho atual
+                Macaquinho atual = listaDeMacaquinhos.getNode(j).getMacaquinho();
+
+                // Macaquinho que vai receber os coquinhos pares
+                // Encontra o nodo do macaquinho -> obtem o objeto macaquinho -> redefine seu array de coquinhos pares
+                System.out.println(j);
+                listaDeMacaquinhos.getNode(atual.getPar()).getMacaquinho().setCoquinhosPares(atual.getCoquinhosPares());
+
+                // Macaquinho que vai receber os coquinhos pares
+                listaDeMacaquinhos.getNode(atual.getImpar()).getMacaquinho().setCoquinhosImpares(atual.getCoquinhosImpares());
+                System.out.println();
+            }
+            System.out.println();
         }
+
 
     }
 }
