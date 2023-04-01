@@ -1,5 +1,3 @@
-package Alest2.Heap;
-
 import java.util.Arrays;
 
 public class Main {

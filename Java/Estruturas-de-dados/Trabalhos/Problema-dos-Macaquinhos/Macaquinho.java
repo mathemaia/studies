@@ -1,6 +1,9 @@
 package Trabalho;
 
 import java.util.Arrays;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Macaquinho {
     // Numero de identificação
@@ -75,14 +78,14 @@ public class Macaquinho {
     public int getCoquinhos() {
         return this.coquinhos;
     }
-    public int[] getCoquinhosPares() {
+    public int[] getCoquinhosPares() throws IOException {
         // Zera o array de coquinhos pares para fazer a rotatividade
         int[] aux = this.coquinhosPares;
         System.out.println("p: " + Arrays.toString(this.coquinhosPares));
         this.coquinhosPares = new int[0];
         return aux;
     }
-    public int[] getCoquinhosImpares() {
+    public int[] getCoquinhosImpares() throws IOException {
         // Zera o array de coquinhos impares para fazer a rotatividade
         int[] aux = this.coquinhosImpares;
         System.out.println("i: " + Arrays.toString(this.coquinhosImpares));

@@ -1,13 +1,14 @@
 package Trabalho;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.io.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-        Scanner in = new Scanner(new File("src/Trabalho/infos/casos/caso0010.txt"));
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(new File("src/Trabalho/infos/casos/caso0050.txt"));
         ListaDuplamenteEncadeada listaDeMacaquinhos = new ListaDuplamenteEncadeada();
         int idx = 0;
 
@@ -40,13 +41,12 @@ public class Main {
         }
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             for (int j = 0; j < listaDeMacaquinhos.size(); j++) {
                 // Macaquinho atual
                 Macaquinho atual = listaDeMacaquinhos.getNode(j).getMacaquinho();
 
                 // Macaquinho que vai receber os coquinhos pares
-                // Encontra o nodo do macaquinho -> obtem o objeto macaquinho -> redefine seu array de coquinhos pares
                 System.out.println(j);
                 listaDeMacaquinhos.getNode(atual.getPar()).getMacaquinho().setCoquinhosPares(atual.getCoquinhosPares());
 
