@@ -1,4 +1,4 @@
-Fazer 100000 rodadas
+Fazer 1 rodadas
 Macaco 0 par -> 4 impar -> 3 : 11 : 178 84 1 111 159 22 54 132 201 51 44
 Macaco 1 par -> 0 impar -> 5 : 9 : 80 82 10 83 98 31 56 84 53
 Macaco 2 par -> 3 impar -> 4 : 7 : 65 194 35 132 191 202 62
