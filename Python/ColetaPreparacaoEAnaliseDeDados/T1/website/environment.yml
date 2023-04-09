@@ -1,0 +1,8 @@
+name: webscrap
+channels:
+  - defaults
+dependencies:
+  - python=2.7
+  - pillow
+  - ca-certificates
+  - certifi
