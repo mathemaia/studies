@@ -1,0 +1,4 @@
+Nome: Matheus Maia da Silva
+Matrícula: 19204136
+
+Pensei em fazer ele abrir o site de forma automática mas não soube como, por isto na Tarefa 1 é preciso estar com o site aberto para que código funcione. Ainda sobre a Tarefa 1, podes ver que está faltando o item 3, que eu não fiz por não ter conseguido instalar o SQLlitestudio. No geral, todo o código está documentado, com comentarios da idéia por trás de um bloco de código em uma célula assim como comentários sobre a própria célula (como por exemplo explicar de maneira resumida qual a ideia do algoritmo para aquela parte em específico). Uma coisa que acho importante salientar é que estou enviando os arquivos com os dados já extraidos, como a pasta de imagens dos filmes, por isso, para testar e ver o scraping funcionando é só excluir estes arquivos e executar o código.
