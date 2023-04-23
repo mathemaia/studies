@@ -1,1 +1,26 @@
+# BeeCrowd
+...
 
+# ColetaPreparacaoEAnaliseDeDados
+...
+
+# EstruturasDeDados
+..
+
+# GrupoDeAlgoritmos
+...
+
+# Jupyter
+...
+
+# MachineLearning
+...
+
+# Outros
+...
+
+# ProblemasClasicosDaCC
+...
+
+# Pygame
+...
