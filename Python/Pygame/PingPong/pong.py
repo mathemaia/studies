@@ -3,9 +3,17 @@ import sys
 import random
 
 
+def ball_restart():
+    global ball_speed_x, ball_speed_y
+
+    ball.center = (WIDTH/2, HEIGHT/2)
+    ball_speed_y *= 1.05
+    ball_speed_x *= 1.05
+
+
 def ball_animation():
     '''Método que atualiza a direção da bola'''
-    global ball_speed_x, ball_speed_y
+    global ball_speed_x, ball_speed_y, player_score, opponent_score
 
     # define a direção inicial da bola
     ball.x += ball_speed_x
@@ -18,7 +26,6 @@ def ball_animation():
     if ball.left <= 0 or ball.right >= WIDTH:
         lost.play()
         ball_restart()
-
     # colisão com os jogadore
     if ball.colliderect(player) or ball.colliderect(opponent):
         collision.play()
@@ -46,14 +53,6 @@ def opponent_ai():
         opponent.bottom = HEIGHT 
 
 
-def ball_restart():
-    global ball_speed_x, ball_speed_y
-
-    ball.center = (WIDTH/2, HEIGHT/2)
-    ball_speed_y *= random.choice((1, -1))
-    ball_speed_x *= random.choice((1, -1))
-
-
 # inicialização do pygame
 pygame.init()
 clock = pygame.time.Clock()
@@ -64,11 +63,11 @@ pygame.mixer.init()
 collision = pygame.mixer.Sound('collision.wav')
 collision.set_volume(0.1)
 lost = pygame.mixer.Sound('lost.wav')
-lost.set_volume(0.1)
+lost.set_volume(0.2)
 
 
 # configurações da janela
-WIDTH = 1280
+WIDTH = 1680
 HEIGHT = 980
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Pong')
@@ -101,21 +100,21 @@ while True:
             sys.exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_DOWN:
-                player_speed += 7
+                player_speed += 15
             if event.key == pygame.K_UP:
-                player_speed -= 7
+                player_speed -= 15
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_DOWN:
-                player_speed -= 7
+                player_speed -= 15
             if event.key == pygame.K_UP:
-                player_speed += 7
+                player_speed += 15
 
     # atualiza o comportamento dos objetos
     ball_animation()
     player_animation()
     opponent_ai()
 
-    # atualiza os componentes visuais
+    # atualiza os objetos do jogo
     screen.fill(bg_color)
     pygame.draw.rect(screen, color, player)
     pygame.draw.rect(screen, color, opponent)
