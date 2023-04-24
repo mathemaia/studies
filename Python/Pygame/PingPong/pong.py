@@ -60,9 +60,9 @@ clock = pygame.time.Clock()
 
 # configurações sonoras
 pygame.mixer.init()
-collision = pygame.mixer.Sound('collision.wav')
+collision = pygame.mixer.Sound('PingPong/collision.wav')
 collision.set_volume(0.1)
-lost = pygame.mixer.Sound('lost.wav')
+lost = pygame.mixer.Sound('PingPong/lost.wav')
 lost.set_volume(0.2)
 
 
