@@ -1,13 +1,11 @@
 package AlestII.Graphs;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AdjacencyMatrixGraph {
     // List of the graph's vertices
     private ArrayList<Vertex> verticesList;
-
-
-
     // Adacency matrix that saves all vertices connections
     private int[][] matrix;
     // Numver of graph's vertices
@@ -34,9 +32,10 @@ public class AdjacencyMatrixGraph {
         this.matrix = new int[numVertices][numVertices];
         this.verticesList = new ArrayList<>();
 
+        Random random = new Random();
         for (int i = 0; i < numVertices; i++) {
             assert false;
-            verticesList.add(new Vertex(i));
+            verticesList.add(new Vertex(random.nextInt(-100, 100)));
         }
     }
 
@@ -59,8 +58,8 @@ public class AdjacencyMatrixGraph {
     public void setVerticesList(ArrayList<Vertex> verticesList) {
         this.verticesList = verticesList;
     }
-    public void connectTo(int vertex1, int vertex2) {
-        
+    public void connectTo(int indexV1, int indexV2) {
+        this.matrix[indexV1][indexV2] = 1;
     }
 
 }
