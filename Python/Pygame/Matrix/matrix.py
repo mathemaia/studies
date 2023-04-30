@@ -3,6 +3,7 @@ import sys
 import random
 import time
 
+
 # classe dos simbolos
 class Symbol:
     def __init__(self, x, y):
