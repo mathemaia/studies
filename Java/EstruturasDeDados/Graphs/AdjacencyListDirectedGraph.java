@@ -103,7 +103,12 @@ public class AdjacencyListDirectedGraph {
         return 0;
     }
 
-
+    /////////////////////////////// Mudar para outgoingEdges e inEdges
+    /**
+     * Returns
+     * @param vertex
+     * @return
+     */
     public String[] edges(String vertex) {
         // Creates an arraylist with the elements of vertices
         ArrayList<String> aux = new ArrayList<>(Arrays.asList(vertices()));
