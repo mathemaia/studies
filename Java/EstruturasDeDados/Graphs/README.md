@@ -10,7 +10,7 @@
 **inDegree(v)**: Returns the number of incoming edges to vertex v. For an undirected graph, this returns the same value as does outDegree(v).
 **outgoingEdges(v)**: Returns an iteration of all outgoing edges from vertex v.
 **incomingEdges(v)**: Returns an iteration of all incoming edges to vertex v. For an undirected graph, this returns the same collection as does outgoingEdges(v).
-**insertVertex(x)**: Creates and returns a new Vertex storing element x.
-**insertEdge(u, v, x)**: Creates and returns a new Edge from vertex u to vertex v, storing element x; an error occurs if there already exists an edge from u to v.
+**addVertex(x)**: Creates and returns a new Vertex storing element x.
 **removeVertex(v)**: Removes vertex v and all its incident edges from the graph.
+**addEdge(u, v, x)**: Creates and returns a new Edge from vertex u to vertex v, storing element x; an error occurs if there already exists an edge from u to v.
 **removeEdge(e)**: Removes edge e from the graph
