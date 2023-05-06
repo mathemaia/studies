@@ -1,4 +1,4 @@
-# Method Descriptions
+# Methods descriptions
 * **_numVertices()_**: Returns the number of vertices of the graph.
 * **_vertices()_**: Returns an iteration of all the vertices of the graph.
 * **_numEdges()_**: Returns the number of edges of the graph.
