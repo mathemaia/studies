@@ -10,34 +10,6 @@ import java.util.Arrays;
  */
 
 public class AdjacencyListDirectedGraph {
-    /**
-     * Inner class that implements the vertices of the graph
-     */
-    private class Vertex {
-        // Parameters
-        private String element;
-        private ArrayList<String> edges;
-
-        // Constructor
-        private Vertex(String element) {
-            this.element = element;
-            this.edges = new ArrayList<>();
-        }
-
-        // Setters
-        private void setEdges(String vertex) {
-            this.edges.add(vertex);
-        }
-
-        // Getters
-        private String getElement() {
-            return this.element;
-        }
-        private String[] getEdges(String vertex) {
-            return this.edges.toArray(String[]::new);
-        }
-    }
-
     // Parameters
     ArrayList<Vertex> verticesList;
     int numEdges;
@@ -49,8 +21,14 @@ public class AdjacencyListDirectedGraph {
     }
 
     // Setters
-    public void addVertex(String vertex) {
-        verticesList.add(new Vertex(vertex));
+
+    /**
+     * Add a vertex by passing its id and element
+     * @param id string that identifies the vertex
+     * @param elem element that the vertex contains
+     */
+    public void addVertex(String id, int elem) {
+        verticesList.add(new Vertex(id, elem));
     }
     public void addEdge(String vertex1, String vertex2) {
         // Creates an arraylist with the elements of vertices
@@ -60,7 +38,7 @@ public class AdjacencyListDirectedGraph {
         int idx = aux.indexOf(vertex1);
 
         // Add the vertex2 to the list of the vertex1 edges
-        verticesList.get(idx).setEdges(vertex2);
+        verticesList.get(idx).setOutgoingEdges(vertex2);
     }
     public void removeEdge() {
 
@@ -92,31 +70,28 @@ public class AdjacencyListDirectedGraph {
      * @return array of vertices
      */
     public String[] vertices() {
-        return verticesList.stream().map(vertex -> vertex.getElement()).toArray(String[]::new);
-    }
+        String[] aux = new String[this.verticesList.size()];
 
-    /**
-     * Return an array of all edges of the graph
-     * @return
-     */
-    public int edges() {
-        return 0;
-    }
+        for (int i = 0; i < aux.length; i++) {
+            aux[i] = String.valueOf(this.verticesList.get(i));
+        }
 
-    /////////////////////////////// Mudar para outgoingEdges e inEdges
+        return aux;
+    }
     /**
-     * Returns
-     * @param vertex
-     * @return
+     * Returns an array with the id of all vertices that are pointed by the vertex passed
+     * @RunningTime
+     * @param v the vertex that the edges outgoes
+     * @return array of vertices
      */
-    public String[] edges(String vertex) {
+    public String[] outgoingEdges(String v) {
         // Creates an arraylist with the elements of vertices
         ArrayList<String> aux = new ArrayList<>(Arrays.asList(vertices()));
 
         // Access the vertex1 that will be connected to vertex2
-        int idx = aux.indexOf(vertex);
+        int idx = aux.indexOf(v);
 
-        return verticesList.get(idx).getEdges(vertex);
+        return verticesList.get(idx).getEdges(v);
     }
 
 
@@ -133,4 +108,49 @@ public class AdjacencyListDirectedGraph {
         return 0;
     }
 
+
+}
+
+/**
+ * Inner class that implements the vertices of the graph
+ */
+class Vertex {
+    // Parameters
+    public String id;
+    public int elem;
+    public ArrayList<String> outgoingEdges;
+    public ArrayList<String> incomingEdges;
+
+    // Constructor
+    public Vertex(String id, int elem) {
+        this.id = id;
+        this.elem = elem;
+        this.outgoingEdges = new ArrayList<>();
+    }
+
+    // Setters
+    public void setOutgoingEdges(String vertex) {
+        this.outgoingEdges.add(vertex);
+    }
+
+    // Getters
+    public String getId() {
+        return this.id;
+    }
+    public String[] getOutgoingEdges(String vertex) {
+        return this.outgoingEdges.toArray(String[]::new);
+    }
+
+    /**
+     * Returns an array with all vertices that
+     * @param vertex
+     * @return
+     */
+    public String[] getIncomingEdges(String vertex) {
+        return this.incomingEdges.toArray(String[]::new);
+    }
+    @Override
+    public String toString() {
+        return this.id;
+    }
 }
