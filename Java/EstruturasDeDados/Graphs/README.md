@@ -15,19 +15,19 @@
 * **_removeVertex(v)_**: Removes vertex v and all its incident edges from the graph.
 * **_removeEdge(e)_**: Removes edge e from the graph.
 
-# Run times
-| Method | Adj. List | Adj. Matrix |
-| --- | --- |
-| numVertices( ) | O(1) | O(1) |
-| numEdges( ) | O(1) | O(1) |
-| vertices( ) | O(n) | O(n) |
-| edges( ) | O(m) | O(m) |
-| getEdge(u, v) | O(min(deg(u),deg(v))) | O(1) |
-| outDegree(v) | O(1) | O(n) |
-| inDegree(v) | O(1) | O(n) |
-| outgoingEdges(v) | O(deg(v)) | O(n) |
-| incomingEdges(v) | O(deg(v)) | O(n) |
-| addVertex(v, elem) | O(1) | O($$n^2$$) |
-| removeVertex(v) | O(deg(v)) | O($$n^2$$) |
-| addEdge(u, v) | O(1) | O(1) |
-| removeEdge(e) | O(1) | O(1) |
+# Big O
+|**Method**|**Adj. List**|**Adj. Matrix**|
+|--------|-----------|-------------|
+|numVertices()|$O(1)$|$O(1)$|
+|numEdges()|$O(1)$|$O(1)$|
+|vertices()|$O(n)$|$O(n)$|
+|edges()|$O(m)$|$O(m)$|
+|getEdge(u, v)|$O(min(d_u, d_v)$|$O(1)$|
+|outDegree(v)|$O(1)$|$O(n)$|
+|inDegree(v)|$O(1)$|$O(n)$|
+|outgoingEdges(v)|$O(d_v)$|$O(n)$|
+|incomingEdges(v)|$O(d_v)$|$O(n)$|
+|addVertex(v, elem)|$O(1)$|$O(n^2)$|
+|removeVertex(v)|$O(d_v)$|$O(n^2)$|
+|addEdge(u, v)|$O(1)$|$O(1)$|
+|removeEdge(e)|$O(1)$|$O(1)$|
