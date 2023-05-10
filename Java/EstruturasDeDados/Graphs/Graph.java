@@ -13,11 +13,31 @@ public class Graph<E> {
         this.egdes = new ArrayList<>();
     }
 
+    // Getters
+    public Vertex<E> getVertex(E element) {
+        Vertex<E> aux = null;
+        for (Vertex<E> vertex : this.vertices) {
+            if (vertex.getElement().equals(element)) {
+                aux = vertex;
+                break;
+            }
+        }
+        return aux;
+    }
+
     // Setters
     public void addVertex(E vertex) {
         this.vertices.add(new Vertex<>(vertex));
     }
-    public void addEdge() {
+    public void addEdge(E origin, E destiny) {
+        Vertex<E> o = this.getVertex(origin);
+        Vertex<E> d = this.getVertex(destiny);
+        Edge<E> edge = new Edge<>(o, d);
+
+        this.egdes.add(edge);
+
+        o.addOutgoingEdge(edge);
+        d.addIncomingEdge(edge);
     }
     public void removeEdge() {
     }
