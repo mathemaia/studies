@@ -1,5 +1,0 @@
-# Diferenças entre 'nn.Linear()' e 'nn.Sequential()'
-nn.Linear(n_entradas, n_saidas): cria uma camada de n neuronios
-nn.Sequential(camada1, camada2, ...): cria uma lista de camadas que irá trabalhar de forma sequencial
-
-#
