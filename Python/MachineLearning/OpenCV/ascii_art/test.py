@@ -1,7 +1,3 @@
-from matplotlib.image import imread
-import matplotlib.pyplot as plt
-import os
-from sklearn.cluster import KMeans
 import cv2
 import numpy as np
 import sys
