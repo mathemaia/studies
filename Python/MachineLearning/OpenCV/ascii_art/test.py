@@ -6,9 +6,9 @@ import cv2
 import numpy as np
 import sys
 
-image = cv2.imread('data/monalisa.jpg')
+image = cv2.imread('data/lucas.jpg')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-size = 3
+size = 10
 image = cv2.resize(image, (round(image.shape[1] * (1/size)), round(image.shape[0] * (1/size))))
 
 
