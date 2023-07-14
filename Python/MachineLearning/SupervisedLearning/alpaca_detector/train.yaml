@@ -1,0 +1,6 @@
+path: C:/GitHub/studies/Python/MachineLearning/SupervisedLearning/alpaca_detector/alpacas
+train: images/train
+val: images/test
+
+names:
+  0: alpaca
