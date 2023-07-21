@@ -71,5 +71,4 @@ def convert_image(image):
     new_image[mask] = '@'
 
     # Imprimir a matriz formatada com colunas alinhadas
-    #return np.savetxt(sys.stdout, new_image, delimiter='', fmt='%2s')
     return new_image 
