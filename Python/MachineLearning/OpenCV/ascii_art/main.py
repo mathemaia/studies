@@ -32,7 +32,22 @@ rows, columns = int(rows), int(columns)
 frame_y = rows // 2 - video_frame1.shape[0] // 2
 frame_x = columns // 2 - video_frame1.shape[1] * (1 + 2) // 2  # Contabiliza o espaço entre os caracteres
 
-# Loop principal do vídeo
+
+
+cap = cv2.VideoCapture(0)
+while True:
+	ret, frame = cap.read()
+
+	print_frame(convert_image(frame))
+	
+	if cv2.waitKey(1) & 0xFF == ord('q'):
+		break
+
+
+cap.release()
+cv2.destroyAllWindows()
+
+'''# Loop principal do vídeo
 while True:
     # Imprime o frame 1 na posição atual
     print_frame(video_frame1)
@@ -68,4 +83,4 @@ while True:
     print_frame(video_frame6)
 
     # Aguarda um curto período de tempo antes de atualizar o próximo frame
-    time.sleep(1)
+    time.sleep(1)'''
