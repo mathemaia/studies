@@ -5,7 +5,7 @@ import sys
 
 def convert_image(image):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    size = 5.6
+    size = 8
     image = cv2.resize(image, (round(image.shape[1] * (1/size)), round(image.shape[0] * (1/size))))
 
     new_image = np.zeros((image.shape[0], image.shape[1])).astype(int).astype(str)
