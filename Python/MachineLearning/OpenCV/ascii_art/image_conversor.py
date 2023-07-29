@@ -3,9 +3,8 @@ import numpy as np
 import sys
 
 
-def convert_image(image):
+def convert_image(image, size):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    size = 8
     image = cv2.resize(image, (round(image.shape[1] * (1/size)), round(image.shape[0] * (1/size))))
 
     new_image = np.zeros((image.shape[0], image.shape[1])).astype(int).astype(str)
@@ -72,3 +71,10 @@ def convert_image(image):
 
     # Imprimir a matriz formatada com colunas alinhadas
     return new_image 
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print('Include the image path')
+    else:
+        image = cv2.imread(sys.argv[1])
+        np.savetxt(sys.stdout, convert_image(image, int(sys.argv[2])), delimiter='', fmt='%2s')
