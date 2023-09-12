@@ -2,7 +2,7 @@ import cv2
 from util import get_limits
 from PIL import Image
 
-yellow = [0, 255, 255]
+yellow = [0, 255, 0]
 cap = cv2.VideoCapture(0)
 while True:
     # read the frames
