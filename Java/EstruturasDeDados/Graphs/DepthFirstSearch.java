@@ -2,7 +2,7 @@ import java.util.*;
 
 class DepthFirstSearch {
     private Set<String> visited;
-    private Map<String, String> edgeTo;
+    public Map<String, String> edgeTo;
     private Graph graph;
     private String firstVisited;
 
@@ -22,10 +22,12 @@ class DepthFirstSearch {
     private void DFS(String v) {
         this.visited.add(v);
 
-        for (String neighbor : graph.getAdj(v)) {
-            if (!visited.contains(neighbor)) {
-                this.edgeTo.put(neighbor, v);
-                this.DFS(neighbor);
+        if (this.graph.getAdj(v) != null) {
+            for (String neighbor : this.graph.getAdj(v)) {
+                if (!visited.contains(neighbor)) {
+                    this.edgeTo.put(neighbor, v);
+                    this.DFS(neighbor);
+                }
             }
         }
     }

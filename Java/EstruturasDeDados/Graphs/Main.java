@@ -1,24 +1,21 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 public class Main {
     public static void main(String[] args) {
-        Graph graph = new UndirectedGraph();
-        DepthFirstSearch dfs = new DepthFirstSearch(graph);
+        Graph digraph = new DirectedGraph();
 
-        graph.addEdge("B", "A");
-        graph.addEdge("C", "B");
-        graph.addEdge("A", "C");
-        graph.addEdge("A", "D");
-        graph.addEdge("D", "B");
-        graph.addEdge("D", "C");
-        graph.addEdge("D", "E");
-        graph.addEdge("F", "G");
+        digraph.addEdge("0", "3");
+        digraph.addEdge("0", "2");
+        digraph.addEdge("2", "3");
+        digraph.addEdge("3", "4");
+        digraph.addEdge("4", "5");
+        digraph.addEdge("5", "3");
 
-        System.out.println(graph.getGraph());
-        dfs.startFrom("B");
-        System.out.println(dfs.pathTo("C"));
+        Topological topological = new Topological(digraph);
+        DigraphCycle hasCycle = new DigraphCycle(digraph);
+
+        System.out.println(digraph.getGraph());
+
+        //System.out.println("\nTopological:\n" + topological.getTopological());
+        //System.out.println("Post-Order:\n" + topological.getPostOrder());
+        hasCycle.containsCycle();
     }
 }
