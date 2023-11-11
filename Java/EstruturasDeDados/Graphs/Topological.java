@@ -7,9 +7,9 @@ import java.util.Collections;
 public class Topological {
     private Set<String> visited;
     private List<String> vertices;
-    private Graph digraph;
+    private DirectedGraph digraph;
 
-    public Topological(Graph digraph) {
+    public Topological(DirectedGraph digraph) {
         this.visited = new HashSet<>();
         this.vertices = new LinkedList<>();
         this.digraph = digraph;
@@ -44,5 +44,4 @@ public class Topological {
 
         this.vertices.add(0, v);
     }
-
 }

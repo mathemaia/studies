@@ -7,11 +7,11 @@ public class DigraphCycle {
         GRAY,   // being visited
         BLACK   // visited
     };
-    private Graph digraph;
+    private DirectedGraph digraph;
     private Map<String, Mark> marked;
     private boolean hasCycle;
 
-    public DigraphCycle(Graph digraph) {
+    public DigraphCycle(DirectedGraph digraph) {
         this.digraph = digraph;
         this.marked = new HashMap<>();
         this.hasCycle = false;

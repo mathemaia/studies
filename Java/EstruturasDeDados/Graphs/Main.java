@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Graph digraph = new DirectedGraph();
+        DirectedGraph digraph = new DirectedGraph();
 
         digraph.addEdge("0", "3");
         digraph.addEdge("0", "2");
@@ -16,6 +16,5 @@ public class Main {
 
         //System.out.println("\nTopological:\n" + topological.getTopological());
         //System.out.println("Post-Order:\n" + topological.getPostOrder());
-        hasCycle.containsCycle();
     }
 }
